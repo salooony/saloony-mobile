@@ -7,14 +7,28 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         width: '100%',
         alignItems: 'center',
-        padding: 15,
-        height: 60,
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingTop: 45,
+        height: 117,
         top: 0,
         backgroundColor: 'white',
         
     },
+    subContainer: { 
+        display: 'flex', 
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        justifyContent: 'space-between',
+        width: 55,
+    },
     headerImage: {
-        width: 120,
+        width: 157,
+        resizeMode: 'contain',
+    },
+    shuffleIcon: {
+        width: 10,
+        height: 10,
         resizeMode: 'contain',
     },
 });

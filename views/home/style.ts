@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     container: {
     height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
     },
     searchContainer: {
         flexDirection: 'column',
@@ -19,14 +20,13 @@ export const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         textAlign: 'center',
-        marginBottom: 10,
         color: 'white',
     },
     subtitle: {
         fontSize: 16,
         textAlign: 'center',
         color: 'white',
-        marginBottom: 20,
+        margin: 20,
     },
     searchButton:{
         display: 'flex',

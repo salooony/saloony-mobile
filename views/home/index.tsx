@@ -10,7 +10,7 @@ import { IconButton } from 'react-native-paper';
 import { styles } from './style';
 
 const Home = () => {
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState<string>('');
 
     const handleSearch = () => {
         // Implement search functionality here
