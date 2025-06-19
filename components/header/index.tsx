@@ -1,4 +1,6 @@
-import { Image, Text, View } from 'react-native';
+import { Colors } from '@/constants/Colors';
+import { Link } from 'expo-router';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-paper';
 import { styles } from './style';
 
@@ -8,7 +10,7 @@ const Header = () => {
             <View style={styles.subContainer}>
                 <Icon
                     source="earth"
-                    color={'black'}
+                    color={Colors.dark.icon}
                     size={22}
                 />  
                 <Text>{'FR'}</Text>
@@ -17,16 +19,24 @@ const Header = () => {
                     style={styles.shuffleIcon}
                 />
             </View>
-            <Image
-                source={require('@/assets/images/saloony-logo-noir-png.png')}
-                style={styles.headerImage}
-            />
+            <Link href="/" asChild>
+                <TouchableOpacity>
+                    <Image
+                        source={require('@/assets/images/saloony-logo-noir-png.png')}
+                        style={styles.headerImage}
+                    />
+                </TouchableOpacity>
+            </Link>
             <View style={{...styles.subContainer, justifyContent: 'flex-end'}}>
-                <Icon
-                    source="account-circle"
-                    color={'black'}
-                    size={25}
-                />  
+                <Link href="/register" asChild>
+                    <TouchableOpacity>
+                        <Icon
+                            source="account-circle"
+                            color={Colors.dark.icon}
+                            size={25}
+                        />
+                    </TouchableOpacity>
+                </Link>
             </View>
 
         </View>

@@ -1,4 +1,3 @@
-import Header from '@/components/header/index';
 import { useState } from 'react';
 import {
     ImageBackground,
@@ -24,19 +23,16 @@ const Home = () => {
       resizeMode="cover"
     >
         <View style={styles.container}>
-            <Header /> 
-            <View style={styles.searchContainer}>
-                <Text style={styles.title}>Bienvenue sur Saloony</Text>
-                <Text style={styles.subtitle}>
-                    Simple . Rapide . Efficace
-                </Text>
+            <Text style={styles.title}>Bienvenue sur Saloony</Text>
+            <Text style={styles.subtitle}>
+                Simple . Rapide . Efficace
+            </Text>
 
-                <TouchableOpacity style={styles.searchButton}> 
-                    <IconButton icon={require('../../assets/icons/filter.png')} />
-                    <Text style={styles.searchButtonText}>Commencer</Text>
-                    <IconButton icon={require('../../assets/icons/search.png')} />
-                </TouchableOpacity>
-            </View>
+            <TouchableOpacity style={styles.searchButton}> 
+                <IconButton icon={require('../../assets/icons/filter.png')} />
+                <Text style={styles.searchButtonText}>Commencer</Text>
+                <IconButton icon={require('../../assets/icons/search.png')} />
+            </TouchableOpacity>
         </View> 
     </ImageBackground>
     );

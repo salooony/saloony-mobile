@@ -1,15 +1,13 @@
+import { Colors } from '@/constants/Colors';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    },
-    searchContainer: {
         flexDirection: 'column',
         justifyContent: 'center',
-        height: '90%',
+        height: '100%',
         padding: 20,
+        backgroundColor: Colors.dark.secondaryBackground,
     },
     backgroundImage: {
         flex: 1,
@@ -20,12 +18,12 @@ export const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         textAlign: 'center',
-        color: 'white',
+        color: Colors.light.text,
     },
     subtitle: {
         fontSize: 16,
         textAlign: 'center',
-        color: 'white',
+        color: Colors.light.text,
         margin: 20,
     },
     searchButton:{
@@ -37,12 +35,12 @@ export const styles = StyleSheet.create({
         borderBottomRightRadius: 25,
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
-        backgroundColor: 'white',
+        backgroundColor: Colors.light.background,
         height: 50,
     },
     searchButtonText: {
         fontSize: 12,
-        color: '#00000073',
+        color: Colors.dark.secondaryText,
         fontWeight: 'bold',
     },
 });
