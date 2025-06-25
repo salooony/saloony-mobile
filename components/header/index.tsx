@@ -1,5 +1,6 @@
-import { Image, Text, View } from 'react-native';
+import { Image, View } from 'react-native';
 import { Icon } from 'react-native-paper';
+import { ThemedText } from '../ui/text/ThemedText';
 import { styles } from './style';
 
 const Header = () => {
@@ -11,14 +12,14 @@ const Header = () => {
                     color={'black'}
                     size={22}
                 />  
-                <Text>{'FR'}</Text>
+                <ThemedText>{'FR'}</ThemedText>
                 <Image
                     source={require('@/assets/icons/buttom-shuffle.png')}
                     style={styles.shuffleIcon}
                 />
             </View>
             <Image
-                source={require('@/assets/images/saloony-logo-noir-png.png')}
+                source={require('@/assets/images/saloony-logo-noir.png')}
                 style={styles.headerImage}
             />
             <View style={{...styles.subContainer, justifyContent: 'flex-end'}}>

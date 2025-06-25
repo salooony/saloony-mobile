@@ -16,18 +16,6 @@ export const styles = StyleSheet.create({
         width: '100%',
         height: '100%',   
     },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        color: 'white',
-    },
-    subtitle: {
-        fontSize: 16,
-        textAlign: 'center',
-        color: 'white',
-        margin: 20,
-    },
     searchButton:{
         display: 'flex',
         flexDirection: 'row',
@@ -39,10 +27,5 @@ export const styles = StyleSheet.create({
         borderTopRightRadius: 25,
         backgroundColor: 'white',
         height: 50,
-    },
-    searchButtonText: {
-        fontSize: 12,
-        color: '#00000073',
-        fontWeight: 'bold',
     },
 });
