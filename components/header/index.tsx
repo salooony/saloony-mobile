@@ -1,6 +1,6 @@
 import { Image, View } from 'react-native';
 import { Icon } from 'react-native-paper';
-import { ThemedText } from '../ui/text/ThemedText';
+import { ThemedText } from '../ui/typgraphy/ThemedText';
 import { styles } from './style';
 
 const Header = () => {

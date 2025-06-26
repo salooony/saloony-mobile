@@ -1,5 +1,5 @@
 import Header from '@/components/header/index';
-import { ThemedText } from '@/components/ui/text/ThemedText';
+import { ThemedText } from '@/components/ui/typography/ThemedText';
 import { useState } from 'react';
 import {
     ImageBackground,
