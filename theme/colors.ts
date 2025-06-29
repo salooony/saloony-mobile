@@ -22,6 +22,7 @@ export const Colors = {
   },
   dark: {
     background: '#000000',
+    secondaryBackground: 'rgba(0, 0, 0, 0.3)',
     surface: '#1E1E1E',
     text: '#000000',
     secondaryText: '#B0B0B0',

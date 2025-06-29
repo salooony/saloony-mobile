@@ -18,7 +18,7 @@ const Home = () => {
 
     return (
     <ImageBackground
-      source={require('../../assets/images/home-page-background.jpg')}
+      source={require('@/assets/images/home-page-background.jpg')}
       style={styles.backgroundImage}
       resizeMode="cover"
     >
