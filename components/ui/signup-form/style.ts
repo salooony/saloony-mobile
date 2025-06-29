@@ -1,4 +1,4 @@
-import { Colors } from '@/constants/Colors';
+import { Colors } from '@/theme/colors';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
         marginTop: 20,
     },
     button: {
-        backgroundColor: Colors.primary,
+        backgroundColor: Colors.brand.primary,
         marginTop: 20,
     },
     buttonText: {
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
         fontSize: 16,
     },
     errorText: {
-        color: Colors.danger,
+        color: Colors.feedback.danger,
         marginTop: 5,
     },
 });

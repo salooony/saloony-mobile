@@ -1,7 +1,8 @@
-import { Colors } from '@/constants/Colors';
+import { Colors } from '@/theme/colors';
 import { Link } from 'expo-router';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-paper';
+import { ThemedText } from '../ui/typography/ThemedText';
 import { styles } from './style';
 
 const Header = () => {
@@ -13,7 +14,7 @@ const Header = () => {
                     color={Colors.dark.icon}
                     size={22}
                 />  
-                <Text>{'FR'}</Text>
+                <ThemedText>{'FR'}</ThemedText>
                 <Image
                     source={require('@/assets/icons/buttom-shuffle.png')}
                     style={styles.shuffleIcon}
@@ -22,7 +23,7 @@ const Header = () => {
             <Link href="/" asChild>
                 <TouchableOpacity>
                     <Image
-                        source={require('@/assets/images/saloony-logo-noir-png.png')}
+                        source={require('@/assets/images/saloony-logo-noir.png')}
                         style={styles.headerImage}
                     />
                 </TouchableOpacity>

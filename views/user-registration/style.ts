@@ -1,4 +1,4 @@
-import { Colors } from '@/constants/Colors';
+import { Colors } from '@/theme/colors';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
         width: 165
     },
     link: {
-        color: Colors.primary,
+        color: Colors.brand.primary,
         fontSize: 12,
         textAlign: 'center',
         width: 80,

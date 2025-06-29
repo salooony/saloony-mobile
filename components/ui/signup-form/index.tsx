@@ -1,4 +1,4 @@
-import { Colors } from '@/constants/Colors';
+import { Colors } from '@/theme/colors';
 import React, { useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { View } from 'react-native';
@@ -44,7 +44,7 @@ const SignupForm: React.FC = () => {
                         style={styles.input}
                         theme={{
                             colors: {
-                            primary: Colors.primary,
+                            primary: Colors.brand.primary,
                             outline: Colors.dark.background,
                         },
       }}
@@ -66,7 +66,7 @@ const SignupForm: React.FC = () => {
                         style={styles.input}
                         theme={{
                             colors: {
-                                primary: Colors.primary,
+                                primary: Colors.brand.primary,
                                 outline: Colors.dark.background,
                             },
                         }}
@@ -94,7 +94,7 @@ const SignupForm: React.FC = () => {
                         style={styles.input}
                         theme={{
                             colors: {
-                                primary: Colors.primary,
+                                primary: Colors.brand.primary,
                                 outline: Colors.dark.background,
                             },
                         }}
@@ -116,7 +116,7 @@ const SignupForm: React.FC = () => {
                         style={styles.input}
                         theme={{
                             colors: {
-                                primary: Colors.primary,
+                                primary: Colors.brand.primary,
                                 outline: Colors.dark.background,
                             },
                         }}
@@ -142,7 +142,7 @@ const SignupForm: React.FC = () => {
                         secureTextEntry={secureText}
                         theme={{
                             colors: {
-                                primary: Colors.primary,
+                                primary: Colors.brand.primary,
                                 outline: Colors.dark.background,
                             },
                         }}

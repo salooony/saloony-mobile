@@ -1,4 +1,4 @@
-import { Colors } from '@/constants/Colors';
+import { Colors } from '@/theme/colors';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -14,18 +14,6 @@ export const styles = StyleSheet.create({
         width: '100%',
         height: '100%',   
     },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        color: Colors.light.text,
-    },
-    subtitle: {
-        fontSize: 16,
-        textAlign: 'center',
-        color: Colors.light.text,
-        margin: 20,
-    },
     searchButton:{
         display: 'flex',
         flexDirection: 'row',
@@ -37,10 +25,5 @@ export const styles = StyleSheet.create({
         borderTopRightRadius: 25,
         backgroundColor: Colors.light.background,
         height: 50,
-    },
-    searchButtonText: {
-        fontSize: 12,
-        color: Colors.dark.secondaryText,
-        fontWeight: 'bold',
     },
 });

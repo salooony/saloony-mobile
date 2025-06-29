@@ -1,7 +1,7 @@
+import { ThemedText } from '@/components/ui/typography/ThemedText';
 import { useState } from 'react';
 import {
     ImageBackground,
-    Text,
     TouchableOpacity,
     View
 } from 'react-native';
@@ -23,14 +23,14 @@ const Home = () => {
       resizeMode="cover"
     >
         <View style={styles.container}>
-            <Text style={styles.title}>Bienvenue sur Saloony</Text>
-            <Text style={styles.subtitle}>
-                Simple . Rapide . Efficace
-            </Text>
+            <ThemedText type='title'>Bienvenue sur Saloony</ThemedText>
+            <ThemedText type='subtitle'>
+                {'Simple • Rapide • Efficace'}
+            </ThemedText>
 
             <TouchableOpacity style={styles.searchButton}> 
                 <IconButton icon={require('../../assets/icons/filter.png')} />
-                <Text style={styles.searchButtonText}>Commencer</Text>
+                <ThemedText type="buttonText">Commencer</ThemedText>
                 <IconButton icon={require('../../assets/icons/search.png')} />
             </TouchableOpacity>
         </View> 
