@@ -1,4 +1,4 @@
-import { ThemedText } from '@/components/ui/typography/ThemedText';
+import ThemedText from '@/components/atoms/typography/ThemedText';
 import { useState } from 'react';
 import {
     ImageBackground,

@@ -1,4 +1,4 @@
-import Header from '@/components/header';
+import Header from '@/components/organisms/header';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { Asset } from 'expo-asset';
 import { useFonts } from 'expo-font';
@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
 import 'react-native-reanimated';
 
-export default function RootLayout() {
+const RootLayout = () => {
   const colorScheme = useColorScheme();
   const [assetsLoaded, setAssetsLoaded] = useState<boolean>(false);
   const [loaded] = useFonts({
@@ -49,3 +49,4 @@ export default function RootLayout() {
     </ThemeProvider>
   );
 }
+export default RootLayout;

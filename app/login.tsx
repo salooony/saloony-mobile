@@ -2,11 +2,13 @@
 import React from 'react';
 import { Text } from 'react-native-paper';
 
-export default function LoginScreen() {
+const LoginScreen = () => {
   return (
    <Text>
     login page
     </Text>
   );
-}
+};
+
+export default LoginScreen;
 
