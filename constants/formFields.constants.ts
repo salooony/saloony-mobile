@@ -2,11 +2,11 @@
 import { SignupFormData } from '@/types/forms'; // if needed
 
 export const SIGNUP_FORM_DEFAULT_VALUES = {
-  firstName: '',
-  lastName: '',
+  firstname: '',
+  lastname: '',
   email: '',
   password: '',
-  phone: '',
+  mobileNumber: '',
   birthdate: '',
 };
 
@@ -17,12 +17,12 @@ export const SIGNUP_FORM_FIELDS: {
   secureText?: boolean;
 }[] = [
   {
-    name: 'lastName',
+    name: 'lastname',
     label: 'Nom *',
     rules: { required: 'Merci de saisir votre nom' },
   },
   {
-    name: 'firstName',
+    name: 'firstname',
     label: 'Prénom *',
     rules: { required: 'Merci de saisir votre prénom' },
   },
@@ -38,7 +38,7 @@ export const SIGNUP_FORM_FIELDS: {
     },
   },
   {
-    name: 'phone',
+    name: 'mobileNumber',
     label: 'Téléphone *',
     rules: { required: 'Merci de saisir votre numéro de téléphone' },
   },
