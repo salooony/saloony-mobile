@@ -1,15 +1,13 @@
+import { Colors } from '@/theme/colors';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    },
-    searchContainer: {
         flexDirection: 'column',
         justifyContent: 'center',
-        height: '90%',
+        height: '100%',
         padding: 20,
+        backgroundColor: Colors.dark.secondaryBackground,
     },
     backgroundImage: {
         flex: 1,
@@ -25,7 +23,7 @@ export const styles = StyleSheet.create({
         borderBottomRightRadius: 25,
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
-        backgroundColor: 'white',
+        backgroundColor: Colors.light.background,
         height: 50,
     },
 });
