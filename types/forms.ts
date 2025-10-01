@@ -6,3 +6,8 @@ export interface SignupFormData {
   mobileNumber: string;
   birthdate: string;
 }
+
+export interface LoginFormData {
+  email: string;
+  password: string;
+}

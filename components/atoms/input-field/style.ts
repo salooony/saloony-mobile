@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   wrapper: {
-    marginBottom: 10,
+    marginBottom: 25,
   },
   label: {
     marginBottom: 4,

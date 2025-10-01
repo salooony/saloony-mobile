@@ -34,4 +34,8 @@ export const styles = StyleSheet.create({
     color: Colors.dark.text,
     fontWeight: 'bold',
   },
+  buttonSubText: {
+    fontSize: 12,
+    color: Colors.dark.secondaryText,
+  },
 });

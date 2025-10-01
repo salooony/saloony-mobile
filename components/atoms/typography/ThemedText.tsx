@@ -5,7 +5,7 @@ import { styles } from './style';
 export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
-  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'buttonText';
+  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'buttonText' | 'buttonSubText';
 };
 
 const ThemedText = ({
@@ -27,6 +27,7 @@ const ThemedText = ({
         type === 'subtitle' ? styles.subtitle : undefined,
         type === 'link' ? styles.link : undefined,
         type === 'buttonText' ? styles.buttonText : undefined,
+        type === 'buttonSubText' ? styles.buttonSubText : undefined,
         style,
       ]}
       {...rest}
