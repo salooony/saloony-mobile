@@ -6,12 +6,11 @@ import { useFonts } from 'expo-font';
 import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-
-const queryClient = new QueryClient();
-
 import { useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
 import 'react-native-reanimated';
+
+const queryClient = new QueryClient();
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();

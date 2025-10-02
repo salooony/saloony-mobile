@@ -4,6 +4,7 @@ import { Image, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-paper';
 import ThemedText from '../../atoms/typography/ThemedText';
 import { styles } from './style';
+import { ROUTES } from '@/constants/routes';
 
 const Header = () => {
     return (
@@ -29,7 +30,7 @@ const Header = () => {
                 </TouchableOpacity>
             </Link>
             <View style={{...styles.subContainer, justifyContent: 'flex-end'}}>
-                <Link href="/register" asChild>
+                <Link href={ROUTES.SIGNUP} asChild>
                     <TouchableOpacity>
                         <Icon
                             source="account-circle"
