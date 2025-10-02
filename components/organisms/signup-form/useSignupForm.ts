@@ -1,4 +1,5 @@
 import { SIGNUP_FORM_DEFAULT_VALUES } from '@/constants/formFields.constants';
+import { ROUTES } from '@/constants/routes';
 import { useCreateUser } from '@/hooks/user/useCreateUser';
 import { SignupFormData } from '@/types/forms';
 import { useRouter } from 'expo-router';
@@ -30,7 +31,7 @@ const useSignupForm = () => {
       await mutateAsync(signupData);
       Alert.alert('Success', 'User created successfully!');
 
-      router.push('/login');
+      router.push(ROUTES.LOGIN);
     } catch (error: any) {
       console.error('Error creating user:', error);
 

@@ -1,4 +1,5 @@
 import { loginUser } from '@/api/usersApi';
+import { API_ROUTES } from '@/constants/routes';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 export const useLoginUser = () => {
@@ -7,8 +8,7 @@ export const useLoginUser = () => {
   return useMutation({
     mutationFn: loginUser,
     onSuccess: (data) => {
-      console.log(' Login user: ', data);
-      queryClient.invalidateQueries({ queryKey: ['users'] });
+      queryClient.invalidateQueries({ queryKey: [API_ROUTES.USERS] });
     },
   });
 };

@@ -4,6 +4,7 @@ import React from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 import { styles } from './style';
 import SignupForm from '@/components/organisms/signup-form';
+import { ROUTES } from '@/constants/routes';
 
 
 const SignupPage: React.FC = () => {
@@ -18,7 +19,7 @@ const SignupPage: React.FC = () => {
             <SignupForm />
             <View style={styles.footer}>
                 <ThemedText style={styles.footerText}>Vous avez déjà un compte ?</ThemedText>
-                <Link href="/login" style={styles.link}>Se connecter</Link>
+                <Link href={ROUTES.LOGIN} style={styles.link}>Se connecter</Link>
             </View>
         </ScrollView>
     </KeyboardAvoidingView>

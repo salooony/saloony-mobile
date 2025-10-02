@@ -1,4 +1,5 @@
 import { createUser } from '@/api/usersApi';
+import { API_ROUTES } from '@/constants/routes';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 export const useCreateUser = () => {
@@ -7,8 +8,7 @@ export const useCreateUser = () => {
   return useMutation({
     mutationFn: createUser,
     onSuccess: (data) => {
-      console.log(" User created:", data);
-      queryClient.invalidateQueries({ queryKey: ['users'] });
+      queryClient.invalidateQueries({ queryKey: [API_ROUTES.USERS] });
     },
   });
 };

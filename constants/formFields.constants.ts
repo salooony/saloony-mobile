@@ -15,10 +15,18 @@ export const LOGIN_FORM_DERAULT_VALUES = {
   password: '',
 };
 
+type FormRule = {
+  required?: string;
+  minLength?: { value: number; message: string };
+  maxLength?: { value: number; message: string };
+  pattern?: { value: RegExp; message: string };
+};
+
+
 export const SIGNUP_FORM_FIELDS: {
   name: keyof SignupFormData;
   label: string;
-  rules?: any;
+  rules?: FormRule;
   secureText?: boolean;
 }[] = [
   {
@@ -64,7 +72,7 @@ export const SIGNUP_FORM_FIELDS: {
 export const LOGIN_FORM_FIELDS: {
   name: keyof LoginFormData;
   label: string;
-  rules?: any;
+  rules?: FormRule;
   secureText?: boolean;
 }[] = [
   {

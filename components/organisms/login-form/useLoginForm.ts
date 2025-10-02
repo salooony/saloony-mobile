@@ -1,4 +1,5 @@
 import { LOGIN_FORM_DERAULT_VALUES } from '@/constants/formFields.constants';
+import { ROUTES } from '@/constants/routes';
 import { useCreateUser } from '@/hooks/user/useCreateUser';
 import { useLoginUser } from '@/hooks/user/useLoginUser';
 import { LoginFormData } from '@/types/forms';
@@ -26,10 +27,9 @@ const useLoginForm = () => {
         await mutateAsync(data);
         Alert.alert('Success', "Welcome!");
 
-        router.push('/')
+        router.push(ROUTES.HOME);
 
     }catch (error){
-        console.log("Error logging in:", error);
         Alert.alert('Error', "Failed to login. Please check your credentials and try again.");
         setError("root.serverError", { message: "Failed to login. Please check your credentials and try again." });
     }

@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import { styles } from './style';
+import { ROUTES } from '@/constants/routes';
 
 const LoginPage = () => {
   return (
@@ -21,7 +22,7 @@ const LoginPage = () => {
         <LoginForm />
         <View style={styles.footer}>
           <ThemedText style={styles.footerText}>Don’t have an account?</ThemedText>
-          <Link href="/login" style={styles.link}>
+          <Link href={ROUTES.SIGNUP} style={styles.link}>
             Sign up
           </Link>
         </View>
