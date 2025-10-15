@@ -1,5 +1,5 @@
 // src/constants/signupForm.constants.ts
-import { LoginFormData, SignupFormData } from '@/types/forms'; // if needed
+import { ForgetFormData, LoginFormData, SignupFormData } from '@/types/forms'; // if needed
 
 export const SIGNUP_FORM_DEFAULT_VALUES = {
   firstname: '',
@@ -15,13 +15,16 @@ export const LOGIN_FORM_DERAULT_VALUES = {
   password: '',
 };
 
+export const FORGET_FORM_DEFAULT_VALUES = {
+  email: '',
+};
+
 type FormRule = {
   required?: string;
   minLength?: { value: number; message: string };
   maxLength?: { value: number; message: string };
   pattern?: { value: RegExp; message: string };
 };
-
 
 export const SIGNUP_FORM_FIELDS: {
   name: keyof SignupFormData;
@@ -97,5 +100,24 @@ export const LOGIN_FORM_FIELDS: {
       },
     },
     secureText: true,
+  },
+];
+
+export const FORGET_FORM_FIELDS: {
+  name: keyof ForgetFormData;
+  label: string;
+  rules?: FormRule;
+  secureText?: boolean;
+}[] = [
+  {
+    name: 'email',
+    label: 'Email *',
+    rules: {
+      required: 'Please enter your email address',
+      pattern: {
+        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        message: 'Invalid email address',
+      },
+    },
   },
 ];
