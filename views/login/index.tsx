@@ -23,7 +23,7 @@ const LoginPage = () => {
         <View style={styles.footer}>
           <ThemedText style={styles.footerText}>Don’t have an account?</ThemedText>
           <Link href={ROUTES.SIGNUP} style={styles.link}>
-            Sign up
+            Sig n up
           </Link>
         </View>
         <SocialAuth />

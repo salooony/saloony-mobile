@@ -11,10 +11,15 @@ export const styles = StyleSheet.create({
     color: Colors.dark.text,
   },
   input: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.light.background,
+  },
+  otpInput: {
+    backgroundColor: Colors.light.background,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   error: {
-    color: 'red',
+    color: Colors.feedback.danger,
     fontSize: 12,
     marginTop: 4,
   },
