@@ -1,5 +1,5 @@
 // src/constants/signupForm.constants.ts
-import { ForgetFormData, LoginFormData, SignupFormData } from '@/types/forms'; // if needed
+import { ForgetFormData, LoginFormData, ResetFormData, SignupFormData } from '@/types/forms';
 
 export const SIGNUP_FORM_DEFAULT_VALUES = {
   firstname: '',
@@ -19,11 +19,17 @@ export const FORGET_FORM_DEFAULT_VALUES = {
   email: '',
 };
 
+export const RESET_FORM_DEFAULT_VALUES = {
+  newPassword: '',
+  confirmPassword: '',
+};
+
 type FormRule = {
   required?: string;
   minLength?: { value: number; message: string };
   maxLength?: { value: number; message: string };
   pattern?: { value: RegExp; message: string };
+  validate?: (value: string, formValues?: any) => string | boolean;
 };
 
 export const SIGNUP_FORM_FIELDS: {
@@ -34,38 +40,38 @@ export const SIGNUP_FORM_FIELDS: {
 }[] = [
   {
     name: 'lastname',
-    label: 'Nom *',
-    rules: { required: 'Merci de saisir votre nom' },
+    label: 'Last Name *',
+    rules: { required: 'Please enter your last name' },
   },
   {
     name: 'firstname',
-    label: 'Prénom *',
-    rules: { required: 'Merci de saisir votre prénom' },
+    label: 'First Name *',
+    rules: { required: 'Please enter your first name' },
   },
   {
     name: 'email',
     label: 'Email *',
     rules: {
-      required: 'Merci de saisir votre adresse email',
+      required: 'Please enter your email address',
       pattern: {
         value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        message: 'Adresse email invalide',
+        message: 'Invalid email address',
       },
     },
   },
   {
     name: 'mobileNumber',
-    label: 'Téléphone *',
-    rules: { required: 'Merci de saisir votre numéro de téléphone' },
+    label: 'Phone *',
+    rules: { required: 'Please enter your phone number' },
   },
   {
     name: 'password',
-    label: 'Mot de passe *',
+    label: 'Password *',
     rules: {
-      required: 'Merci de saisir votre mot de passe',
+      required: 'Please enter your password',
       minLength: {
         value: 6,
-        message: 'Le mot de passe doit contenir au moins 6 caractères',
+        message: 'Password must be at least 6 characters',
       },
     },
     secureText: true,
@@ -82,21 +88,21 @@ export const LOGIN_FORM_FIELDS: {
     name: 'email',
     label: 'Email *',
     rules: {
-      required: 'Merci de saisir votre adresse email',
+      required: 'Please enter your email address',
       pattern: {
         value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        message: 'Adresse email invalide',
+        message: 'Invalid email address',
       },
     },
   },
   {
     name: 'password',
-    label: 'Mot de passe *',
+    label: 'Password *',
     rules: {
-      required: 'Merci de saisir votre mot de passe',
+      required: 'Please enter your password',
       minLength: {
         value: 6,
-        message: 'Le mot de passe doit contenir au moins 6 caractères',
+        message: 'Password must be at least 6 characters',
       },
     },
     secureText: true,
@@ -121,3 +127,38 @@ export const FORGET_FORM_FIELDS: {
     },
   },
 ];
+
+export const RESET_FORM_FIELDS: {
+  name: keyof ResetFormData;
+  label: string;
+  rules?: FormRule;
+  secureText?: boolean;
+}[] = [
+  {
+    name: 'newPassword',
+    label: 'New Password *',
+    rules: {
+      required: 'Please enter your new password',
+      minLength: {
+        value: 6,
+        message: 'Password must be at least 6 characters',
+      },
+    },
+    secureText: true,
+  },
+  {
+    name: 'confirmPassword',
+    label: 'Confirm Password *',
+    rules: {
+      required: 'Please confirm your password',
+      minLength: {
+        value: 6,
+        message: 'Password must be at least 6 characters',
+      },
+      validate: (value: string, formValues?: any) => {
+        return value === formValues?.newPassword || 'Passwords do not match';
+      },
+    },
+    secureText: true,
+  },
+]

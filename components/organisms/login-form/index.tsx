@@ -1,14 +1,13 @@
-import { View, Text, TouchableOpacity } from 'react-native';
-import React from 'react';
-import { styles } from './style';
-import { LOGIN_FORM_FIELDS } from '@/constants/formFields.constants';
 import InputField from '@/components/atoms/input-field';
-import useLoginForm from './useLoginForm';
-import { Button } from 'react-native-paper';
 import ThemedText from '@/components/atoms/typography/ThemedText';
-import { Colors } from '@/theme/colors';
-import { useRouter } from 'expo-router';
+import { LOGIN_FORM_FIELDS } from '@/constants/formFields.constants';
 import { ROUTES } from '@/constants/routes';
+import { useRouter } from 'expo-router';
+import React from 'react';
+import { TouchableOpacity, View } from 'react-native';
+import { Button } from 'react-native-paper';
+import { styles } from './style';
+import useLoginForm from './useLoginForm';
 
 const LoginForm = () => {
   const router = useRouter();

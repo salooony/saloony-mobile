@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { IconButton } from 'react-native-paper';
 import { styles } from './style';
+import ResetScreen from '@/app/reset';
 
 const Home = () => {
     const [searchQuery, setSearchQuery] = useState<string>('');

@@ -11,6 +11,12 @@ export interface LoginFormData {
   email: string;
   password: string;
 }
+
 export interface ForgetFormData {
-  email: string
+  email: string;
+}
+
+export interface ResetFormData {
+  newPassword: string;
+  confirmPassword: string;
 }
