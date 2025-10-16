@@ -1,19 +1,24 @@
+import { Colors } from '@/theme/colors';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  title: {
-    marginBottom: 10,
-    fontWeight: 'bold',
-  },
   loginButtonContainer: {
     flex: 1,
     alignItems: 'center',
-    marginTop: 40,
+    marginTop: 30,
   },
   button: {
-    width: '100%',
-    paddingVertical: 8,
-    borderRadius: 8,
+    backgroundColor: Colors.brand.primary,
+    width: 180,
+    height: 51,
+    borderRadius: 25.5,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  errorText: {
+    color: Colors.feedback.danger,
+    marginTop: 5,
   },
   label: {
     fontSize: 18,
