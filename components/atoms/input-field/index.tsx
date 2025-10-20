@@ -8,12 +8,13 @@ import { styles } from './style';
 interface InputFieldProps {
   control: Control<any>;
   name: string;
-  label: string;
+  label?: string;
   rules?: object;
   secureText?: boolean;
   error?: FieldError;
   toggleSecureText?: () => void;
   isSecureText?: boolean;
+  isOtp?: boolean;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -25,6 +26,7 @@ const InputField: React.FC<InputFieldProps> = ({
   secureText,
   toggleSecureText,
   isSecureText,
+  isOtp,
 }) => {
   return (
     <View style={styles.wrapper}>
@@ -39,9 +41,25 @@ const InputField: React.FC<InputFieldProps> = ({
             value={value}
             onChangeText={onChange}
             autoCapitalize="none"
-            style={styles.input}
+            style={[isOtp && { width: 53, height: 47 }, styles.input]}
+            contentStyle={
+              isOtp
+                ? {
+                    minWidth: 0,
+                    width: 53,
+                    height: 47,
+                    textAlignVertical: 'center',
+                    fontSize: 20,
+                    padding: 0,
+                    textAlign: 'center',
+                  }
+                : undefined
+            }
+            keyboardType={isOtp ? 'numeric' : 'default'}
+            maxLength={isOtp ? 1 : undefined}
             secureTextEntry={secureText}
             theme={{
+              roundness: isOtp ? 12 : undefined,
               colors: {
                 primary: Colors.brand.primary,
                 outline: Colors.dark.background,

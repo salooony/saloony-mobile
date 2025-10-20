@@ -128,6 +128,19 @@ export const FORGET_FORM_FIELDS: {
   },
 ];
 
+export const OTP_FORM_FIELDS = [
+  ...Array(5).fill(null).map((_, idx) => ({
+    name: `otp${idx + 1}`,
+    label: `Chiffre ${idx + 1} *`,
+    rules: {
+      required: 'Ce champ est requis',
+      pattern: {
+        value: /^[0-9]$/,
+        message: 'Veuillez entrer un chiffre',
+      },
+    },
+  })),
+];
 export const RESET_FORM_FIELDS: {
   name: keyof ResetFormData;
   label: string;
