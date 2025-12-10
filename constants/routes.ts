@@ -10,4 +10,6 @@ export const API_ROUTES = {
   USERS: '/users' as const,
   LOGIN: ROUTES.LOGIN,
   OTP: ROUTES.OTP,
+  SIGNUP: ROUTES.SIGNUP,
+
 }

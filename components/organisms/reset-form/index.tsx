@@ -1,8 +1,8 @@
+import CustomButton from '@/components/atoms/button';
 import InputField from '@/components/atoms/input-field';
 import { RESET_FORM_FIELDS } from '@/constants/formFields.constants';
 import React from 'react';
 import { View } from 'react-native';
-import { Button } from 'react-native-paper';
 import { styles } from './style';
 import useResetForm from './useResetForm';
 
@@ -42,17 +42,13 @@ const ResetForm = () => {
           />
         );
       })}
-      <View style={styles.loginButtonContainer}>
-        <Button
-          loading={isSubmitting}
-          disabled={isSubmitting}
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          isSubmitting={isSubmitting}
           mode="contained"
           onPress={handleSubmit(onSubmit)}
-          style={styles.button}
-          labelStyle={styles.label}
-        >
-          Reset
-        </Button>
+          message='Reset'
+        />
       </View>
     </View>
   );
