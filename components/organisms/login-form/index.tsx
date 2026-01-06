@@ -1,3 +1,4 @@
+import CustomButton from '@/components/atoms/button';
 import InputField from '@/components/atoms/input-field';
 import ThemedText from '@/components/atoms/typography/ThemedText';
 import { LOGIN_FORM_FIELDS } from '@/constants/formFields.constants';
@@ -5,7 +6,6 @@ import { ROUTES } from '@/constants/routes';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { Button } from 'react-native-paper';
 import { styles } from './style';
 import useLoginForm from './useLoginForm';
 
@@ -32,17 +32,13 @@ const LoginForm = () => {
         <ThemedText type="buttonSubText">Forgot Password?</ThemedText>
       </TouchableOpacity>
 
-      <View style={styles.loginButtonContainer}>
-        <Button
-          loading={isSubmitting}
-          disabled={isSubmitting}
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          isSubmitting={isSubmitting}
           mode="contained"
           onPress={handleSubmit(onSubmit)}
-          style={styles.button}
-          labelStyle={styles.label}
-        >
-          Login
-        </Button>
+          message='Login'
+        />
       </View>
     </View>
   );

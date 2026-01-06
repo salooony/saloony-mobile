@@ -1,11 +1,12 @@
+import CustomButton from '@/components/atoms/button';
 import InputField from '@/components/atoms/input-field';
 import { FORGET_FORM_FIELDS } from '@/constants/formFields.constants';
 import { ROUTES } from '@/constants/routes';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { Button, Text } from 'react-native-paper';
-import { styles } from './styele';
+import { Text } from 'react-native-paper';
+import { styles } from './style';
 import useForgetForm from './useForgetForm';
 
 const ForgetForm = () => {
@@ -24,19 +25,13 @@ const ForgetForm = () => {
           error={errors[field.name]}
         />
       ))}
-
-      <View style={styles.loginButtonContainer}>
-        <Button
-          loading={isSubmitting}
-          disabled={isSubmitting}
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          isSubmitting={isSubmitting}
           mode="contained"
           onPress={handleSubmit(onSubmit)}
-          style={styles.button}
-          labelStyle={styles.label}
-        >
-          Send
-        </Button>
-
+          message='Send'
+        />
         <TouchableOpacity onPress={() => router.push(ROUTES.LOGIN)}>
           <Text variant="labelMedium" style={styles.backText}>
             Back to Login

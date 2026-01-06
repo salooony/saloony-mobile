@@ -1,10 +1,10 @@
+import { ROUTES } from '@/constants/routes';
 import { Colors } from '@/theme/colors';
 import { Link } from 'expo-router';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-paper';
 import ThemedText from '../../atoms/typography/ThemedText';
 import { styles } from './style';
-import { ROUTES } from '@/constants/routes';
 
 const Header = () => {
     return (
@@ -21,7 +21,7 @@ const Header = () => {
                     style={styles.shuffleIcon}
                 />
             </View>
-            <Link href="/" asChild>
+            <Link href={ROUTES.HOME} asChild>
                 <TouchableOpacity>
                     <Image
                         source={require('@/assets/images/saloony-logo-noir.png')}
@@ -30,7 +30,7 @@ const Header = () => {
                 </TouchableOpacity>
             </Link>
             <View style={{...styles.subContainer, justifyContent: 'flex-end'}}>
-                <Link href={ROUTES.SIGNUP} asChild>
+                <Link href={ROUTES.LOGIN} asChild>
                     <TouchableOpacity>
                         <Icon
                             source="account-circle"

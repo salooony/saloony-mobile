@@ -1,7 +1,7 @@
 export const Colors = {
   brand: {
     primary: '#AC8D5F',
-    secondary: '#FCF7F3',
+    secondary: '#FFFCFA',
     tertiary: '#877754',
   },
   feedback: {
