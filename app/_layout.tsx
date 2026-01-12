@@ -1,6 +1,7 @@
+import AuthBootstrap from '@/components/organisms/auth-bootstrap';
 import Header from '@/components/organisms/header';
+import { store } from '@/store/store';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Asset } from 'expo-asset';
 import { useFonts } from 'expo-font';
 import { Slot } from 'expo-router';
@@ -9,8 +10,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
 import 'react-native-reanimated';
-
-const queryClient = new QueryClient();
+import { Provider, useDispatch } from 'react-redux';
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();
@@ -43,15 +43,17 @@ const RootLayout = () => {
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <Provider store={store}>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <>
+          <AuthBootstrap />
           <Header />
           <Slot />
           <StatusBar style="auto" />
         </>
       </ThemeProvider>
-    </QueryClientProvider>
+    </Provider>
   );
 };
+
 export default RootLayout;

@@ -10,7 +10,7 @@ import { Alert } from 'react-native';
 const useResetForm = () => {
   const [secureTextNew, setSecureTextNew] = useState<boolean>(true);
   const [secureTextConfirm, setSecureTextConfirm] = useState<boolean>(true);
-  
+
   const {
     control,
     handleSubmit,
@@ -20,7 +20,7 @@ const useResetForm = () => {
   } = useForm<ResetFormData>({
     defaultValues: RESET_FORM_DEFAULT_VALUES,
   });
-  
+
   const router = useRouter();
 
   const newPassword = watch('newPassword');
@@ -40,8 +40,6 @@ const useResetForm = () => {
       Alert.alert(ALERT_TITLES.SUCCESS, SUCCESS_MESSAGES.PASSWORD_RESET_SUCCESS);
       router.push(ROUTES.LOGIN);
     } catch (error: any) {
-      console.error('Error resetting password:', error);
-      
       if (error.response?.status === 500) {
         setError('newPassword', {
           message: ERROR_MESSAGES.SERVER_ERROR,
@@ -68,7 +66,7 @@ const useResetForm = () => {
     setSecureTextNew,
     secureTextConfirm,
     setSecureTextConfirm,
-    newPassword, 
+    newPassword,
   };
 };
 

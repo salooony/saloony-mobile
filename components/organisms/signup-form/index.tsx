@@ -7,32 +7,33 @@ import { styles } from './style';
 import useSignupForm from './useSignupForm';
 
 const SignupForm: React.FC = () => {
-const { control, handleSubmit, errors, isSubmitting, onSubmit, secureText, setSecureText } = useSignupForm();
+  const { control, handleSubmit, errors, isSubmitting, onSubmit, secureText, setSecureText } =
+    useSignupForm();
 
-    return (
-        <View style={styles.container}>
-            {SIGNUP_FORM_FIELDS.map((field) => (
-                <InputField
-                key={field.name}
-                control={control}
-                name={field.name}
-                label={field.label}
-                rules={field.rules}
-                error={errors[field.name]}
-                secureText={field.secureText ? secureText : false}
-                toggleSecureText={field.secureText ? () => setSecureText(!secureText) : undefined}
-                isSecureText={secureText}
-                />
-            ))}
-            <View style={styles.buttonContainer}>
-                <CustomButton
-                isSubmitting={isSubmitting}
-                mode="contained"
-                onPress={handleSubmit(onSubmit)}
-                message='Créer mon compte'
-                />
-            </View>
-        </View>
-    )
-}
+  return (
+    <View style={styles.container}>
+      {SIGNUP_FORM_FIELDS.map((field) => (
+        <InputField
+          key={field.name}
+          control={control}
+          name={field.name}
+          label={field.label}
+          rules={field.rules}
+          error={errors[field.name]}
+          secureText={field.secureText ? secureText : false}
+          toggleSecureText={field.secureText ? () => setSecureText(!secureText) : undefined}
+          isSecureText={secureText}
+        />
+      ))}
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          isLoading={isSubmitting}
+          mode="contained"
+          onPress={handleSubmit(onSubmit)}
+          message="Créer mon compte"
+        />
+      </View>
+    </View>
+  );
+};
 export default SignupForm;

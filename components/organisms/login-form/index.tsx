@@ -11,8 +11,17 @@ import useLoginForm from './useLoginForm';
 
 const LoginForm = () => {
   const router = useRouter();
-  const { control, handleSubmit, errors, isSubmitting, onSubmit, secureText, setSecureText } =
-    useLoginForm();
+  const {
+    control,
+    handleSubmit,
+    errors,
+    isSubmitting,
+    onSubmit,
+    secureText,
+    setSecureText,
+    isLoading,
+    error,
+  } = useLoginForm();
   return (
     <View style={styles.container}>
       {LOGIN_FORM_FIELDS.map((field) => (
@@ -28,16 +37,19 @@ const LoginForm = () => {
           isSecureText={secureText}
         />
       ))}
-      <TouchableOpacity style={styles.forgetText} onPress={() => router.push(ROUTES.FORGET_PASSWORD)}>
+      <TouchableOpacity
+        style={styles.forgetText}
+        onPress={() => router.push(ROUTES.FORGET_PASSWORD)}
+      >
         <ThemedText type="buttonSubText">Forgot Password?</ThemedText>
       </TouchableOpacity>
 
       <View style={styles.buttonContainer}>
         <CustomButton
-          isSubmitting={isSubmitting}
           mode="contained"
           onPress={handleSubmit(onSubmit)}
-          message='Login'
+          message="Login"
+          isLoading={isLoading || isSubmitting}
         />
       </View>
     </View>
