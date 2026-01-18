@@ -5,22 +5,19 @@ import { Image, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-paper';
 import ThemedText from '../../atoms/typography/ThemedText';
 import { styles } from './style';
+import { useState } from 'react';
+import SettingsSidebar from '../settings-sidebar';
 
-const Header = () => {
+const Header = ({setSidebarVisible, sidebarVisible}: any) => {
+    
+
     return (
         <View style={styles.headerContainer}>
             <View style={styles.subContainer}>
-                <Icon
-                    source="earth"
-                    color={Colors.dark.icon}
-                    size={22}
-                />  
-                <ThemedText>{'FR'}</ThemedText>
-                <Image
-                    source={require('@/assets/icons/buttom-shuffle.png')}
-                    style={styles.shuffleIcon}
-                />
-            </View>
+          <TouchableOpacity onPress={() => setSidebarVisible(true)}>
+            <Icon source="menu" size={24} color={Colors.dark.icon} />
+          </TouchableOpacity>
+        </View>
             <Link href={ROUTES.HOME} asChild>
                 <TouchableOpacity>
                     <Image
@@ -38,8 +35,16 @@ const Header = () => {
                             size={25}
                         />
                     </TouchableOpacity>
+                    
                 </Link>
+                <ThemedText>{'FR'}</ThemedText>
+                <Image
+                    source={require('@/assets/icons/buttom-shuffle.png')}
+                    style={styles.shuffleIcon}
+                />
             </View>
+
+            
 
         </View>
     );
