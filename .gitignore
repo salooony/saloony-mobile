@@ -40,4 +40,6 @@ yarn-error.*
 
 app-example
 android/
-android/
+
+*storybook.log
+storybook-static
