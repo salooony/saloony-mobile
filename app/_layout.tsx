@@ -9,6 +9,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
 import 'react-native-reanimated';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const queryClient = new QueryClient();
 
@@ -45,11 +46,11 @@ const RootLayout = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <>
+        <SafeAreaView edges={["top"]} style={{ flex: 1 }}>
           <Header />
           <Slot />
           <StatusBar style="auto" />
-        </>
+        </SafeAreaView>
       </ThemeProvider>
     </QueryClientProvider>
   );

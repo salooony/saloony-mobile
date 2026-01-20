@@ -9,7 +9,7 @@ import { styles } from './style';
 const Header = () => {
     return (
         <View style={styles.headerContainer}>
-            <View style={styles.subContainer}>
+            <TouchableOpacity style={styles.subContainer} accessibilityRole="button" accessibilityLabel="Open language modal">
                 <Icon
                     source="earth"
                     color={Colors.dark.icon}
@@ -20,18 +20,18 @@ const Header = () => {
                     source={require('@/assets/icons/buttom-shuffle.png')}
                     style={styles.shuffleIcon}
                 />
-            </View>
-            <Link href={ROUTES.HOME} asChild>
-                <TouchableOpacity>
+            </TouchableOpacity>
+            <Link style={styles.subContainer} href={ROUTES.HOME} asChild>
+                <TouchableOpacity accessibilityRole="button" accessibilityLabel="Go to Home">
                     <Image
                         source={require('@/assets/images/saloony-logo-noir.png')}
                         style={styles.headerImage}
                     />
                 </TouchableOpacity>
             </Link>
-            <View style={{...styles.subContainer, justifyContent: 'flex-end'}}>
+            <View style={styles.subContainer}>
                 <Link href={ROUTES.LOGIN} asChild>
-                    <TouchableOpacity>
+                    <TouchableOpacity accessibilityRole="button" accessibilityLabel="Go to login">
                         <Icon
                             source="account-circle"
                             color={Colors.dark.icon}
@@ -40,7 +40,6 @@ const Header = () => {
                     </TouchableOpacity>
                 </Link>
             </View>
-
         </View>
     );
 }
