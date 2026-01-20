@@ -1,6 +1,5 @@
 import { LOGIN_FORM_DERAULT_VALUES } from '@/constants/formFields.constants';
 import { ROUTES } from '@/constants/routes';
-import { useCreateUser } from '@/hooks/user/useCreateUser';
 import { useLoginUser } from '@/hooks/user/useLoginUser';
 import { LoginFormData } from '@/types/forms';
 import { useRouter } from 'expo-router';
@@ -19,7 +18,7 @@ const useLoginForm = () => {
     defaultValues: LOGIN_FORM_DERAULT_VALUES,
   });
 
-  const { mutateAsync, isPending } = useLoginUser();
+  const { mutateAsync } = useLoginUser();
   const router = useRouter();
 
   const onSubmit: SubmitHandler<LoginFormData> = async (data) => {
