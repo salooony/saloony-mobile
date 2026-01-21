@@ -1,6 +1,6 @@
 import { SIGNUP_FORM_DEFAULT_VALUES } from '@/constants/formFields.constants';
+import { ALERT_TITLES, ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants/messages';
 import { ROUTES } from '@/constants/routes';
-import { useCreateUser } from '@/hooks/user/useCreateUser';
 import { SignupFormData } from '@/types/forms';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
@@ -17,32 +17,28 @@ const useSignupForm = () => {
   } = useForm<SignupFormData>({
     defaultValues: SIGNUP_FORM_DEFAULT_VALUES,
   });
-  const { mutateAsync, isPending } = useCreateUser();
   const router = useRouter();
 
   const onSubmit: SubmitHandler<SignupFormData> = async (data) => {
     try {
       const signupData = {
-      ...data,
-      role: 'Client',
-      birthdate: '4/3/2005',
-      language: 'French',
+        ...data,
+        role: 'Client',
+        birthdate: '4/3/2005',
+        language: 'French',
       };
-      await mutateAsync(signupData);
-      Alert.alert('Success', 'User created successfully!');
+      Alert.alert(ALERT_TITLES.SUCCESS, SUCCESS_MESSAGES.USER_CREATED);
 
       router.push(ROUTES.LOGIN);
     } catch (error: any) {
-      console.error('Error creating user:', error);
-
       if (error.response?.status === 409) {
-      setError('email', {
-        message: "This email is already in use. Please use another one.",
-      });
+        setError('email', {
+          message: ERROR_MESSAGES.EMAIL_ALREADY_EXISTS,
+        });
       } else {
-      setError('email', {
-        message: 'An error occurred. Please try again later.',
-      });
+        setError('email', {
+          message: ERROR_MESSAGES.SIGNUP_FAILED,
+        });
       }
     }
   };
