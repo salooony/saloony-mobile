@@ -2,21 +2,23 @@ import { Button } from 'react-native-paper';
 import { styles } from './style';
 
 interface CustomButtonProps {
-    message: string;
-    isSubmitting: boolean;
-    mode: "text" | "outlined" | "contained";
-    onPress: () => Promise<void> | void;
+  message: string;
+  mode: 'text' | 'outlined' | 'contained';
+  onPress: () => Promise<void> | void;
+  isLoading?: boolean;
 }
-const CustomButton = ({ message, isSubmitting, mode, onPress }: CustomButtonProps) => {
-    return <Button
-        loading={isSubmitting}
-        disabled={isSubmitting}
-        mode={mode}
-        onPress={onPress}
-        style={styles.button}
-        labelStyle={styles.label}
+const CustomButton = ({ message, mode, onPress, isLoading }: CustomButtonProps) => {
+  return (
+    <Button
+      loading={isLoading}
+      disabled={isLoading}
+      mode={mode}
+      onPress={onPress}
+      style={styles.button}
+      labelStyle={styles.label}
     >
-        {message}
+      {message}
     </Button>
-}
+  );
+};
 export default CustomButton;
