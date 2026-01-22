@@ -27,10 +27,10 @@ const ForgetForm = () => {
       ))}
       <View style={styles.buttonContainer}>
         <CustomButton
-          isSubmitting={isSubmitting}
+          isLoading={isSubmitting}
           mode="contained"
           onPress={handleSubmit(onSubmit)}
-          message='Send'
+          message="Send"
         />
         <TouchableOpacity onPress={() => router.push(ROUTES.LOGIN)}>
           <Text variant="labelMedium" style={styles.backText}>
