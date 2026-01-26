@@ -6,6 +6,7 @@ import { styles } from './style';
 import { Link } from 'expo-router';
 import { ROUTES } from '@/constants/routes';
 import { Colors } from '@/theme/colors';
+import CustomButton from '@/components/atoms/button';
 
 type SettingsSidebarProps = {
   sidebarVisible: boolean;
@@ -17,6 +18,16 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
     setSidebarVisible(false);
   }
 
+  const Hairdresser = "Hairdresser";
+  const Braber = "Braber";
+  const Manicure = "Manicure";
+  const Beauty = "Beauty Institute";
+  const featuresText = "More features in the app.";
+  const establishment = "Add your establishment";
+
+
+
+
   return (
     <Portal>
       <Modal
@@ -26,48 +37,45 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
       >
         <Surface style={styles.surface}>
           <Pressable style={styles.cross} onPress={onClose}>
-            <IconButton icon="close" size={30} iconColor={Colors.light.tabIconDefault}  />
+            <IconButton icon="close" size={30} iconColor={Colors.light.tabIconDefault} />
           </Pressable>
 
-          {/* <ThemedText variant="titleLarge">Settings</ThemedText> */}
-            <TouchableOpacity>
-              <Image
-                source={require('@/assets/images/saloony-logo-noir.png')}
-                style={styles.SidebarImage}
-              />
-            </TouchableOpacity>
-          <Button
+          <TouchableOpacity>
+            <Image
+              source={require('@/assets/images/saloony-logo-noir.png')}
+              style={styles.SidebarImage}
+            />
+          </TouchableOpacity>
+          <CustomButton
             style={styles.containedButton}
-            // isSubmitting={isSubmitting}
             mode="contained"
-            onPress={() => { }}
-          >Log in</Button>
+            message='Log in'
+          />
 
           <Button
             style={styles.outlinedButton}
-            // isSubmitting={isSubmitting}
             mode="outlined"
             onPress={() => { }}
-          ><Text >
-              Add your establishment
-
+          ><Text>
+            {establishment}
             </Text>
           </Button>
 
+
           <View style={styles.itemsContainer}>
             <TouchableOpacity style={styles.item}>
-              <ThemedText> Hairdresser</ThemedText>
+              <ThemedText> {Hairdresser}</ThemedText>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.item}>
-              <ThemedText> Braber</ThemedText>
+              <ThemedText> {Braber}</ThemedText>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.item}>
-              <ThemedText> Manicure</ThemedText>
+              <ThemedText> {Manicure}</ThemedText>
             </TouchableOpacity>
             <TouchableOpacity style={styles.item}>
-              <ThemedText> Beauty Institute</ThemedText>
+              <ThemedText> {Beauty}</ThemedText>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.features}>
@@ -75,11 +83,11 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
                 <Icon source={"infinity"} size={25} color='#AC8D5F' />
               </View>
               <View>
-                <ThemedText style={{ textAlign: "center", paddingLeft: 5, textDecorationLine: "underline", color: Colors.light.secondaryText }}> More features in the app.</ThemedText>
+                <ThemedText style={styles.featuresText}> {featuresText}</ThemedText>
               </View>
             </TouchableOpacity>
 
-            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: "start", marginTop: "170"  }}>
+            <View style={styles.media}>
               <Icon source="instagram" size={28} color={Colors.light.tabIconDefault} />
               <Icon source="facebook" size={28} color={Colors.light.tabIconDefault} />
             </View>
@@ -93,3 +101,5 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
 };
 
 export default SettingsSidebar;
+
+

@@ -9,6 +9,8 @@ import { useState } from 'react';
 import SettingsSidebar from '../settings-sidebar';
 
 const Header = ({setSidebarVisible, sidebarVisible}: any) => {
+
+    const FR = 'FR';
     
 
     return (
@@ -37,7 +39,7 @@ const Header = ({setSidebarVisible, sidebarVisible}: any) => {
                     </TouchableOpacity>
                     
                 </Link>
-                <ThemedText>{'FR'}</ThemedText>
+                <ThemedText>{FR}</ThemedText>
                 <Image
                     source={require('@/assets/icons/buttom-shuffle.png')}
                     style={styles.shuffleIcon}

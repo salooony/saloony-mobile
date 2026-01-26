@@ -48,6 +48,14 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 50,
-  }
+  },
+  media: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: "start",
+    marginTop: "170",
+    },
+
+    featuresText: { textAlign: "center", paddingLeft: 5, textDecorationLine: "underline", color: Colors.light.secondaryText},
 });
 
