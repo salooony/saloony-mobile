@@ -4,6 +4,8 @@ export const ROUTES = {
   SIGNUP: '/signup' as const,
   FORGET_PASSWORD: '/forget' as const,
   OTP: '/otp' as const,
+  SEARCH: '/search' as const,
+  SEARCH_CITY: '/searchCity' as const,
 };
 
 export const API_ROUTES = {
@@ -11,5 +13,4 @@ export const API_ROUTES = {
   LOGIN: ROUTES.LOGIN,
   OTP: ROUTES.OTP,
   SIGNUP: ROUTES.SIGNUP,
-
-}
+};

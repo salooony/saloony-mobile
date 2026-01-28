@@ -1,16 +1,17 @@
 import AuthBootstrap from '@/components/organisms/auth-bootstrap';
 import Header from '@/components/organisms/header';
+import { ROUTES } from '@/constants/routes';
 import { store } from '@/store/store';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { Asset } from 'expo-asset';
 import { useFonts } from 'expo-font';
-import { Slot } from 'expo-router';
+import { Slot, usePathname } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
 import 'react-native-reanimated';
-import { Provider, useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();
@@ -18,6 +19,9 @@ const RootLayout = () => {
   const [loaded] = useFonts({
     Inter: require('../assets/fonts/Inter-VariableFont_opsz,wght.ttf'),
   });
+  const pathname = usePathname();
+  const hideHeaderRoutes: string[] = [ROUTES.SEARCH, ROUTES.SEARCH_CITY];
+  const shouldShowHeader = !hideHeaderRoutes.includes(pathname);
 
   useEffect(() => {
     async function preload() {
@@ -47,7 +51,7 @@ const RootLayout = () => {
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <>
           <AuthBootstrap />
-          <Header />
+          {shouldShowHeader && <Header />}
           <Slot />
           <StatusBar style="auto" />
         </>
