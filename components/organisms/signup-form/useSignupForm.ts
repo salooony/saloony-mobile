@@ -1,7 +1,9 @@
 import { SIGNUP_FORM_DEFAULT_VALUES } from '@/constants/formFields.constants';
 import { ALERT_TITLES, ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants/messages';
 import { ROUTES } from '@/constants/routes';
+import { useUsersMutation } from '@/store/features/auth/authApi';
 import { SignupFormData } from '@/types/forms';
+import { handleFormError, SIGNUP_FIELD_MATCHERS } from '@/utils/formErrorHandler';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -19,6 +21,8 @@ const useSignupForm = () => {
   });
   const router = useRouter();
 
+  const [users] = useUsersMutation();
+
   const onSubmit: SubmitHandler<SignupFormData> = async (data) => {
     try {
       const signupData = {
@@ -27,19 +31,25 @@ const useSignupForm = () => {
         birthdate: '4/3/2005',
         language: 'French',
       };
+
+      const res = await users(signupData).unwrap();
+
       Alert.alert(ALERT_TITLES.SUCCESS, SUCCESS_MESSAGES.USER_CREATED);
 
       router.push(ROUTES.LOGIN);
-    } catch (error: any) {
-      if (error.response?.status === 409) {
-        setError('email', {
-          message: ERROR_MESSAGES.EMAIL_ALREADY_EXISTS,
-        });
-      } else {
-        setError('email', {
-          message: ERROR_MESSAGES.SIGNUP_FAILED,
-        });
-      }
+    } catch (error: unknown) {
+      handleFormError({
+        error,
+        setError,
+        fieldMatchers: SIGNUP_FIELD_MATCHERS,
+        customHandlers: {
+          409: () => {
+            setError('email', {
+              message: ERROR_MESSAGES.EMAIL_ALREADY_EXISTS,
+            });
+          },
+        },
+      });
     }
   };
 
