@@ -7,12 +7,12 @@ import ThemedText from '../../atoms/typography/ThemedText';
 import { styles } from './style';
 import { useState } from 'react';
 import SettingsSidebar from '../settings-sidebar';
+import { FR } from '@/constants/settingsSidebar.constants';
 
 const Header = ({setSidebarVisible, sidebarVisible}: any) => {
 
-    const FR = 'FR';
     
-
+    
     return (
         <View style={styles.headerContainer}>
             <View style={styles.subContainer}>

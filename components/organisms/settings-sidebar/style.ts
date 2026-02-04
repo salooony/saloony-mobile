@@ -56,6 +56,8 @@ export const styles = StyleSheet.create({
     marginTop: "170",
     },
 
+    separator: {height: 8},
+
     featuresText: { textAlign: "center", paddingLeft: 5, textDecorationLine: "underline", color: Colors.light.secondaryText},
 });
 

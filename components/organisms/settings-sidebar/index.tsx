@@ -7,6 +7,7 @@ import { Link } from 'expo-router';
 import { ROUTES } from '@/constants/routes';
 import { Colors } from '@/theme/colors';
 import CustomButton from '@/components/atoms/button';
+import { Beauty, Braber, establishment, Hairdresser, Manicure, featuresText } from '@/constants/settingsSidebar.constants';
 
 type SettingsSidebarProps = {
   sidebarVisible: boolean;
@@ -18,12 +19,6 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
     setSidebarVisible(false);
   }
 
-  const Hairdresser = "Hairdresser";
-  const Braber = "Braber";
-  const Manicure = "Manicure";
-  const Beauty = "Beauty Institute";
-  const featuresText = "More features in the app.";
-  const establishment = "Add your establishment";
 
 
 
@@ -52,14 +47,13 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
             message='Log in'
           />
 
-          <Button
+          <View style={styles.separator} />
+
+          <CustomButton
             style={styles.outlinedButton}
             mode="outlined"
-            onPress={() => { }}
-          ><Text>
-            {establishment}
-            </Text>
-          </Button>
+            message='Add your establishment'
+          />
 
 
           <View style={styles.itemsContainer}>

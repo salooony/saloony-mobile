@@ -1,18 +1,18 @@
+import AuthBootstrap from '@/components/organisms/auth-bootstrap';
 import Header from '@/components/organisms/header';
-import SettingsSidebar from '@/components/organisms/settings-sidebar';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Asset } from 'expo-asset';
 import { useFonts } from 'expo-font';
-import { Slot } from 'expo-router';
+import { Slot, Stack, useSegments } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
+import { PaperProvider } from 'react-native-paper';
 import 'react-native-reanimated';
-import { Provider as PaperProvider } from 'react-native-paper';
-
-const queryClient = new QueryClient();
+import { Provider } from 'react-redux';
+import { store } from '@/store/store';
+import SettingsSidebar from '@/components/organisms/settings-sidebar';
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();
@@ -21,6 +21,9 @@ const RootLayout = () => {
   const [loaded] = useFonts({
     Inter: require('../assets/fonts/Inter-VariableFont_opsz,wght.ttf'),
   });
+
+  const segment = useSegments();
+  const isStorybookRoute = (segment?.[0] as string) === 'storybook';
 
   useEffect(() => {
     async function preload() {
@@ -46,19 +49,19 @@ const RootLayout = () => {
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <Provider store={store}>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <PaperProvider>
-          <>
+        <>
           <Header sidebarVisible={sidebarVisible} setSidebarVisible={setSidebarVisible} />
           <SettingsSidebar sidebarVisible={sidebarVisible} setSidebarVisible={setSidebarVisible} />
-
           <Slot />
           <StatusBar style="auto" />
         </>
         </PaperProvider>
       </ThemeProvider>
-    </QueryClientProvider>
+    </Provider>
   );
 };
+
 export default RootLayout;

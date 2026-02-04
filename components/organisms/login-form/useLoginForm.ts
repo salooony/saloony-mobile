@@ -1,12 +1,16 @@
-import { LOGIN_FORM_DERAULT_VALUES } from '@/constants/formFields.constants';
+import { LOGIN_FORM_DEFAULT_VALUES } from '@/constants/formFields.constants';
+import { ALERT_TITLES, ERROR_MESSAGES, SUCCESS_MESSAGES } from '@/constants/messages';
 import { ROUTES } from '@/constants/routes';
-import { useCreateUser } from '@/hooks/user/useCreateUser';
-import { useLoginUser } from '@/hooks/user/useLoginUser';
+import { storage } from '@/services/storage';
+import { useLoginMutation } from '@/store/features/auth/authApi';
+import { setTokens } from '@/store/features/auth/authSlice';
 import { LoginFormData } from '@/types/forms';
+import { logger } from '@/utils/logger';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Alert } from 'react-native';
+import { useDispatch } from 'react-redux';
 
 const useLoginForm = () => {
   const [secureText, setSecureText] = useState<boolean>(true);
@@ -16,26 +20,48 @@ const useLoginForm = () => {
     setError,
     formState: { errors, isSubmitting },
   } = useForm<LoginFormData>({
-    defaultValues: LOGIN_FORM_DERAULT_VALUES,
+    defaultValues: LOGIN_FORM_DEFAULT_VALUES,
   });
 
-  const { mutateAsync, isPending } = useLoginUser();
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  const [login, { isLoading, error }] = useLoginMutation();
 
   const onSubmit: SubmitHandler<LoginFormData> = async (data) => {
-    try{
-        await mutateAsync(data);
-        Alert.alert('Success', "Welcome!");
-
-        router.push(ROUTES.HOME);
-
-    }catch (error){
-        Alert.alert('Error', "Failed to login. Please check your credentials and try again.");
-        setError("root.serverError", { message: "Failed to login. Please check your credentials and try again." });
+    try {
+      const res = await login({ username: data.email, password: data.password }).unwrap();
+      dispatch(
+        setTokens({
+          accessToken: res.accessToken,
+          refreshToken: res.refreshToken,
+        }),
+      );
+      try {
+        await storage.setTokens(res.accessToken, res.refreshToken);
+      } catch (storageError) {
+        logger.warn('Error storing tokens:', storageError);
+      }
+      Alert.alert(ALERT_TITLES.SUCCESS, SUCCESS_MESSAGES.LOGIN_SUCCESS);
+      router.replace(ROUTES.HOME);
+    } catch (err: any) {
+      const msg = err?.data?.message || ERROR_MESSAGES.LOGIN_FAILED;
+      Alert.alert(ALERT_TITLES.ERROR, msg);
+      setError('root', { message: msg });
     }
   };
 
-  return { control, handleSubmit, errors, isSubmitting, onSubmit, secureText, setSecureText };
+  return {
+    control,
+    handleSubmit,
+    errors,
+    isSubmitting,
+    onSubmit,
+    secureText,
+    setSecureText,
+    isLoading,
+    error,
+  };
 };
 
 export default useLoginForm;
