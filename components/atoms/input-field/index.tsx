@@ -15,6 +15,7 @@ interface InputFieldProps {
   toggleSecureText?: () => void;
   isSecureText?: boolean;
   isOtp?: boolean;
+  placeholder?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -27,6 +28,7 @@ const InputField: React.FC<InputFieldProps> = ({
   toggleSecureText,
   isSecureText,
   isOtp,
+  placeholder,
 }) => {
   return (
     <View style={styles.wrapper}>
@@ -42,6 +44,7 @@ const InputField: React.FC<InputFieldProps> = ({
             onChangeText={onChange}
             autoCapitalize="none"
             style={[isOtp && { width: 53, height: 47 }, styles.input]}
+            placeholder={placeholder}
             contentStyle={
               isOtp
                 ? {

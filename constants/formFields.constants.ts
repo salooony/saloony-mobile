@@ -177,3 +177,31 @@ export const RESET_FORM_FIELDS: {
     secureText: true,
   },
 ];
+
+// My contact details
+export const CONTACT_DETAILS_FORM_FIELDS = [
+  {
+    name: 'firstname',
+    label: 'First Name *',
+    rules: { required: 'Please enter your first name' },
+    placeholder: 'John',
+  },
+  {
+    name: 'lastname',
+    label: 'Last Name *',
+    rules: { required: 'Please enter your last name' },
+    placeholder: 'Doe',
+  },
+  {
+    name: 'email',
+    label: 'Email *',
+    rules: { required: 'Please enter your email address' },
+    placeholder: 'info@gmail.com',
+  },
+  {
+    name: 'mobileNumber',
+    label: 'Phone Number *',
+    rules: { required: 'Please enter your phone number' },
+    placeholder: '+1 234 567 890',
+  },
+];

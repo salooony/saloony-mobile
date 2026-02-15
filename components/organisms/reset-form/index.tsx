@@ -44,10 +44,10 @@ const ResetForm = () => {
       })}
       <View style={styles.buttonContainer}>
         <CustomButton
-          isLoading={isSubmitting}
+          isSubmitting={isSubmitting}
           mode="contained"
           onPress={handleSubmit(onSubmit)}
-          message='Reset'
+          message="Reset"
         />
       </View>
     </View>

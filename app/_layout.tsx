@@ -1,4 +1,3 @@
-import AuthBootstrap from '@/components/organisms/auth-bootstrap';
 import Header from '@/components/organisms/header';
 import { store } from '@/store/store';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
@@ -10,7 +9,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
 import 'react-native-reanimated';
-import { Provider, useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();

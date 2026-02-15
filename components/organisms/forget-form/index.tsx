@@ -27,7 +27,7 @@ const ForgetForm = () => {
       ))}
       <View style={styles.buttonContainer}>
         <CustomButton
-          isLoading={isSubmitting}
+          isSubmitting={isSubmitting}
           mode="contained"
           onPress={handleSubmit(onSubmit)}
           message="Send"
