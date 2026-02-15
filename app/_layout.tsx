@@ -2,6 +2,7 @@ import AuthBootstrap from '@/components/organisms/auth-bootstrap';
 import Header from '@/components/organisms/header';
 import { store } from '@/store/store';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Asset } from 'expo-asset';
 import { useFonts } from 'expo-font';
 import { Slot } from 'expo-router';
@@ -9,11 +10,9 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
-import 'react-native-reanimated';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
 
 const queryClient = new QueryClient();
-import { Provider, useDispatch } from 'react-redux';
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();
@@ -42,19 +41,19 @@ const RootLayout = () => {
   }, []);
 
   if (!loaded || !assetsLoaded) {
-    return null; // Or a splash component
+    return null;
   }
 
   return (
     <Provider store={store}>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <SafeAreaView edges={["top"]} style={{ flex: 1 }}>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
           <AuthBootstrap />
           <Header />
           <Slot />
           <StatusBar style="auto" />
-        </SafeAreaView>
-      </ThemeProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
     </Provider>
   );
 };
