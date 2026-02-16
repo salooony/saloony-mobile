@@ -1,63 +1,61 @@
-import { StyleSheet } from 'react-native';
 import { Colors } from '@/theme/colors';
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
+  modalWrapper: {
+    marginTop: 0,
+    marginBottom: 0,
+    justifyContent: 'flex-start',
+  },
   modalContainer: {
     width: '75%',
     height: '100%',
     backgroundColor: Colors.dark.background,
     position: 'absolute',
     left: 0,
-  },
-  containedButton: {
-    backgroundColor: Colors.brand.primary,
-
-  },
-  outlinedButton: {
-    borderColor:Colors.brand.tertiary,
-    marginTop: 10,
-    color: Colors.light.text,
-
+    alignSelf: 'stretch',
   },
   SidebarImage: {
-        width: 157,
-        height: 100,
-        resizeMode: 'contain',
-    },
-    itemsContainer: {
-      marginTop: 40,
-
-    },
+    width: 157,
+    height: 100,
+    resizeMode: 'contain',
+  },
+  itemsContainer: {
+    marginTop: 40,
+  },
   surface: {
     flex: 1,
     padding: 20,
-    position: "relative",
+    position: 'relative',
   },
   cross: {
-    position: "absolute",
+    position: 'absolute',
     top: 37,
     right: 15,
-
   },
   item: {
     marginTop: 10,
   },
   features: {
-    display: "flex",
+    display: 'flex',
     flexDirection: 'row',
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     marginTop: 50,
   },
   media: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: "start",
-    marginTop: "170",
-    },
+    justifyContent: 'flex-start',
+    marginTop: 170,
+  },
 
-    separator: {height: 8},
+  separator: { height: 8 },
 
-    featuresText: { textAlign: "center", paddingLeft: 5, textDecorationLine: "underline", color: Colors.light.secondaryText},
+  featuresText: {
+    textAlign: 'center',
+    paddingLeft: 5,
+    textDecorationLine: 'underline',
+    color: Colors.light.secondaryText,
+  },
 });
-

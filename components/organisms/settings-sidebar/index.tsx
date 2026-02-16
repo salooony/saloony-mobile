@@ -1,33 +1,31 @@
-
-import { Image, Pressable, TouchableOpacity, View } from 'react-native';
-import { Button, Icon, IconButton, Modal, Portal, Surface, Text } from 'react-native-paper';
-import ThemedText from '@/components/atoms/typography/ThemedText';
-import { styles } from './style';
-import { Link } from 'expo-router';
-import { ROUTES } from '@/constants/routes';
-import { Colors } from '@/theme/colors';
 import CustomButton from '@/components/atoms/button';
-import { Beauty, Braber, establishment, Hairdresser, Manicure, featuresText } from '@/constants/settingsSidebar.constants';
+import ThemedText from '@/components/atoms/typography/ThemedText';
+import {
+  SIDEBAR_CATEGORY_LABELS,
+  SIDEBAR_ESTABLISHMENT_LABEL,
+  SIDEBAR_FEATURES_TEXT,
+} from '@/constants/settings-sidebar.constants';
+import { Colors } from '@/theme/colors';
+import { Image, Pressable, TouchableOpacity, View } from 'react-native';
+import { Icon, IconButton, Modal, Portal, Surface } from 'react-native-paper';
+import { styles } from './style';
 
 type SettingsSidebarProps = {
   sidebarVisible: boolean;
-  setSidebarVisible: () => void;
+  setSidebarVisible: (visible: boolean) => void;
 };
 
 const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: SettingsSidebarProps) => {
   const onClose = () => {
     setSidebarVisible(false);
-  }
-
-
-
-
+  };
 
   return (
     <Portal>
       <Modal
         visible={visible}
         onDismiss={onClose}
+        style={styles.modalWrapper}
         contentContainerStyle={styles.modalContainer}
       >
         <Surface style={styles.surface}>
@@ -41,43 +39,30 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
               style={styles.SidebarImage}
             />
           </TouchableOpacity>
-          <CustomButton
-            style={styles.containedButton}
-            mode="contained"
-            message='Log in'
-          />
+          <CustomButton mode="contained" message="Log in" isSubmitting={false} onPress={() => {}} />
 
           <View style={styles.separator} />
 
           <CustomButton
-            style={styles.outlinedButton}
             mode="outlined"
-            message='Add your establishment'
+            message={SIDEBAR_ESTABLISHMENT_LABEL}
+            isSubmitting={false}
+            onPress={() => {}}
           />
 
-
           <View style={styles.itemsContainer}>
-            <TouchableOpacity style={styles.item}>
-              <ThemedText> {Hairdresser}</ThemedText>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.item}>
-              <ThemedText> {Braber}</ThemedText>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.item}>
-              <ThemedText> {Manicure}</ThemedText>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.item}>
-              <ThemedText> {Beauty}</ThemedText>
-            </TouchableOpacity>
+            {SIDEBAR_CATEGORY_LABELS.map((label) => (
+              <TouchableOpacity key={label} style={styles.item}>
+                <ThemedText> {label}</ThemedText>
+              </TouchableOpacity>
+            ))}
 
             <TouchableOpacity style={styles.features}>
-              <View >
-                <Icon source={"infinity"} size={25} color='#AC8D5F' />
+              <View>
+                <Icon source={'infinity'} size={25} color="#AC8D5F" />
               </View>
               <View>
-                <ThemedText style={styles.featuresText}> {featuresText}</ThemedText>
+                <ThemedText style={styles.featuresText}> {SIDEBAR_FEATURES_TEXT}</ThemedText>
               </View>
             </TouchableOpacity>
 
@@ -85,8 +70,6 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
               <Icon source="instagram" size={28} color={Colors.light.tabIconDefault} />
               <Icon source="facebook" size={28} color={Colors.light.tabIconDefault} />
             </View>
-
-
           </View>
         </Surface>
       </Modal>
@@ -95,5 +78,3 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
 };
 
 export default SettingsSidebar;
-
-
