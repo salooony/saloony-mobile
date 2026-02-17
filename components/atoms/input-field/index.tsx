@@ -1,9 +1,10 @@
+import { eyeDownIcon, eyeUpIcon } from '@/constants/icons';
 import { Colors } from '@/theme/colors';
 import React from 'react';
 import { Control, Controller, FieldError } from 'react-hook-form';
-import { View } from 'react-native';
+import { Image, View } from 'react-native';
 import { Text, TextInput } from 'react-native-paper';
-import { styles } from './style';
+import { getOutlineTheme, styles } from './style';
 
 interface InputFieldProps {
   control: Control<any>;
@@ -41,34 +42,29 @@ const InputField: React.FC<InputFieldProps> = ({
             value={value}
             onChangeText={onChange}
             autoCapitalize="none"
-            style={[isOtp && { width: 53, height: 47 }, styles.input]}
-            contentStyle={
-              isOtp
-                ? {
-                    minWidth: 0,
-                    width: 53,
-                    height: 47,
-                    textAlignVertical: 'center',
-                    fontSize: 20,
-                    padding: 0,
-                    textAlign: 'center',
-                  }
-                : undefined
-            }
+            style={[isOtp && { width: 50, height: 47 }, styles.input]}
+            contentStyle={isOtp ? styles.otpContentStyle : undefined}
             keyboardType={isOtp ? 'numeric' : 'default'}
             maxLength={isOtp ? 1 : undefined}
             secureTextEntry={secureText}
+            error={!!error}
+            {...getOutlineTheme(!!error)}
             theme={{
-              roundness: isOtp ? 12 : undefined,
+              roundness: 12,
               colors: {
                 primary: Colors.brand.primary,
-                outline: Colors.dark.background,
+                outline: error ? Colors.feedback.danger : Colors.dark.background,
               },
             }}
             right={
               toggleSecureText ? (
                 <TextInput.Icon
-                  icon={isSecureText ? 'eye-off' : 'eye'}
+                  icon={({ size }) => (
+                    <Image
+                      source={isSecureText ? eyeDownIcon : eyeUpIcon}
+                      style={{ width: size, height: size }}
+                    />
+                  )}
                   onPress={toggleSecureText}
                 />
               ) : null
