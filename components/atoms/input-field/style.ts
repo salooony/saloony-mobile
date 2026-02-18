@@ -38,6 +38,9 @@ export const styles = StyleSheet.create({
 
 export const getOutlineTheme = (error?: boolean) => ({
   outlineColor: error ? Colors.feedback.danger : Colors.dark.background,
+});
+
+export const outlineStyle = {
   borderRadius: 12,
   borderWidth: 1,
-});
+};

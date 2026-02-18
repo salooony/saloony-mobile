@@ -4,7 +4,7 @@ import React from 'react';
 import { Control, Controller, FieldError } from 'react-hook-form';
 import { Image, View } from 'react-native';
 import { Text, TextInput } from 'react-native-paper';
-import { getOutlineTheme, styles } from './style';
+import { getOutlineTheme, outlineStyle, styles } from './style';
 
 interface InputFieldProps {
   control: Control<any>;
@@ -44,6 +44,7 @@ const InputField: React.FC<InputFieldProps> = ({
             autoCapitalize="none"
             style={[isOtp && { width: 50, height: 47 }, styles.input]}
             contentStyle={isOtp ? styles.otpContentStyle : undefined}
+            outlineStyle={outlineStyle}
             keyboardType={isOtp ? 'numeric' : 'default'}
             maxLength={isOtp ? 1 : undefined}
             secureTextEntry={secureText}
