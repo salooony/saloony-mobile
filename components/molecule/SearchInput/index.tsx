@@ -22,7 +22,7 @@ const SearchInput = ({
       <TextInput
         mode="flat"
         placeholder={placeholder}
-        placeholderTextColor="#999999"
+        placeholderTextColor={Colors.dark.secondaryText}
         value={searchQuery}
         onChangeText={setSearchQuery}
         style={[styles.searchInput, centerText && styles.searchInputCentered]}
@@ -34,7 +34,7 @@ const SearchInput = ({
           },
         }}
       />
-      <TouchableOpacity onPress={() => {}} style={styles.searchButton}>
+      <TouchableOpacity style={styles.searchButton}>
         <Image source={require('@/assets/icons/search.png')} style={styles.searchIcon} />
       </TouchableOpacity>
     </View>
