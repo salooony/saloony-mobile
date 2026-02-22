@@ -5,7 +5,7 @@ import { store } from '@/store/store';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { Asset } from 'expo-asset';
 import { useFonts } from 'expo-font';
-import { Slot, usePathname } from 'expo-router';
+import { Stack, usePathname } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
@@ -22,6 +22,9 @@ const RootLayout = () => {
   const pathname = usePathname();
   const hideHeaderRoutes: string[] = [ROUTES.SEARCH, ROUTES.SEARCH_CITY];
   const shouldShowHeader = !hideHeaderRoutes.includes(pathname);
+
+  const segment = useSegments();
+  const isStorybookRoute = (segment?.[0] as string) === 'storybook';
 
   useEffect(() => {
     async function preload() {
@@ -51,8 +54,14 @@ const RootLayout = () => {
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <>
           <AuthBootstrap />
-          {shouldShowHeader && <Header />}
-          <Slot />
+          {!isStorybookRoute && <Header />}
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="index" />
+            {/* Storybook route - dev only */}
+            <Stack.Protected guard={__DEV__}>
+              <Stack.Screen name="storybook" />
+            </Stack.Protected>
+          </Stack>
           <StatusBar style="auto" />
         </>
       </ThemeProvider>
