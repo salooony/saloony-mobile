@@ -48,8 +48,13 @@ const RootLayout = () => {
 
   return (
     <Provider store={store}>
+<<<<<<< HEAD
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <>
+=======
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+>>>>>>> 0268274 (fix: code review)
           <AuthBootstrap />
           {!isStorybookRoute && <Header />}
           <Stack screenOptions={{ headerShown: false }}>
@@ -60,8 +65,13 @@ const RootLayout = () => {
             </Stack.Protected>
           </Stack>
           <StatusBar style="auto" />
+<<<<<<< HEAD
         </>
       </ThemeProvider>
+=======
+        </ThemeProvider>
+      </QueryClientProvider>
+>>>>>>> 0268274 (fix: code review)
     </Provider>
   );
 };
