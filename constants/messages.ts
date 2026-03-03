@@ -17,6 +17,10 @@ export const ERROR_MESSAGES = {
     SOMETHING_WENT_WRONG: 'An error occurred. Please try again later.',
     NETWORK_ERROR: 'Connection error. Check your internet connection.',
     SERVER_ERROR: 'Server error. Please try again later.',
+
+    LOGIN_FAILED: 'Failed to login. Please check your credentials and try again.',
+    SIGNUP_FAILED: 'Failed to create account. Please try again later.',
+    PASSWORD_RESET_FAILED: 'Failed to reset password. Please try again later.',
 } as const;
 
 export const ALERT_TITLES = {

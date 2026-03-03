@@ -10,7 +10,7 @@ export const SIGNUP_FORM_DEFAULT_VALUES = {
   birthdate: '',
 };
 
-export const LOGIN_FORM_DERAULT_VALUES = {
+export const LOGIN_FORM_DEFAULT_VALUES = {
   email: '',
   password: '',
 };
@@ -129,17 +129,19 @@ export const FORGET_FORM_FIELDS: {
 ];
 
 export const OTP_FORM_FIELDS = [
-  ...Array(5).fill(null).map((_, idx) => ({
-    name: `otp${idx + 1}`,
-    label: `Chiffre ${idx + 1} *`,
-    rules: {
-      required: 'Ce champ est requis',
-      pattern: {
-        value: /^[0-9]$/,
-        message: 'Veuillez entrer un chiffre',
+  ...Array(5)
+    .fill(null)
+    .map((_, idx) => ({
+      name: `otp${idx + 1}`,
+      label: `Chiffre ${idx + 1} *`,
+      rules: {
+        required: 'Ce champ est requis',
+        pattern: {
+          value: /^[0-9]$/,
+          message: 'Veuillez entrer un chiffre',
+        },
       },
-    },
-  })),
+    })),
 ];
 export const RESET_FORM_FIELDS: {
   name: keyof ResetFormData;
@@ -174,4 +176,4 @@ export const RESET_FORM_FIELDS: {
     },
     secureText: true,
   },
-]
+];
