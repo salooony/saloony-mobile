@@ -1,4 +1,4 @@
-import { View, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
 import Line from '@/components/atoms/line';
 import ThemedText from '@/components/atoms/typography/ThemedText';
@@ -18,7 +18,7 @@ const SocialAuth = () => {
             source={require('../../../assets/icons/google.png')}
             style={styles.icon}
             resizeMode="contain"
-          /> 
+          />
         </TouchableOpacity>
         <TouchableOpacity>
           <Image

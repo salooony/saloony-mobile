@@ -19,7 +19,7 @@ export const style = StyleSheet.create({
     borderRadius: 25.5,
     justifyContent: 'center',
     alignItems: 'center',
-    },
+  },
 
   label: {
     color: Colors.light.text,

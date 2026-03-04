@@ -9,17 +9,17 @@ const OtpForm = () => {
   const { control } = useOtpForm();
 
   return (
-      <View style={styles.container}>
-        {OTP_FORM_FIELDS.map((field) => (
-          <InputField
-            key={field.name}
-            control={control}
-            name={field.name}
-            rules={field.rules}
-            isOtp
-          />
-        ))}
-      </View>
+    <View style={styles.container}>
+      {OTP_FORM_FIELDS.map((field) => (
+        <InputField
+          key={field.name}
+          control={control}
+          name={field.name}
+          rules={field.rules}
+          isOtp
+        />
+      ))}
+    </View>
   );
 };
 

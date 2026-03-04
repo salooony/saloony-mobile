@@ -8,7 +8,7 @@ import { Link } from 'expo-router';
 const OtpFooter = () => {
   return (
     <View style={style.footer}>
-      <ThemedText style={style.footerText}>Didn't receive the OTP?</ThemedText>
+      <ThemedText style={style.footerText}>Didn&apos;t receive the OTP?</ThemedText>
       <Link href={ROUTES.LOGIN} style={style.link}>
         RESEND
       </Link>

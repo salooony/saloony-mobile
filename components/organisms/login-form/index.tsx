@@ -20,7 +20,6 @@ const LoginForm = () => {
     secureText,
     setSecureText,
     isLoading,
-    error,
   } = useLoginForm();
   return (
     <View style={styles.container}>
@@ -49,7 +48,7 @@ const LoginForm = () => {
           mode="contained"
           onPress={handleSubmit(onSubmit)}
           message="Login"
-          isLoading={isLoading || isSubmitting}
+          isSubmitting={isLoading || isSubmitting}
         />
       </View>
     </View>

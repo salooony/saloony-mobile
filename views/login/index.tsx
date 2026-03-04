@@ -4,12 +4,7 @@ import SocialAuth from '@/components/organisms/SocialAuth';
 import { ROUTES } from '@/constants/routes';
 import { Link } from 'expo-router';
 import React from 'react';
-import {
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  View,
-} from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 import { style } from '../otp/style';
 import { styles } from './style';
 

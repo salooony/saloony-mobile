@@ -21,12 +21,13 @@ const useSignupForm = () => {
 
   const onSubmit: SubmitHandler<SignupFormData> = async (data) => {
     try {
-      const signupData = {
-        ...data,
-        role: 'Client',
-        birthdate: '4/3/2005',
-        language: 'French',
-      };
+      // const signupData = {
+      //   ...data,
+      //   role: 'Client',
+      //   birthdate: '4/3/2005',
+      //   language: 'French',
+      // };
+
       Alert.alert(ALERT_TITLES.SUCCESS, SUCCESS_MESSAGES.USER_CREATED);
 
       router.push(ROUTES.LOGIN);
