@@ -1,123 +1,150 @@
 import React from 'react';
-import { render, fireEvent, renderHook, act } from '@testing-library/react-native';
+import { render, fireEvent } from '@testing-library/react-native';
+import { renderHook, act, waitFor } from '@testing-library/react-native';
 import { Alert } from 'react-native';
 import SignupForm from '../index';
 import useSignupForm from '../useSignupForm';
+jest.mock('@/components/atoms/input-field', () => {
+  const React = require('react');
+  const { TextInput } = require('react-native');
 
-// ⚡ Mock react-native-paper components that use hooks internally
-jest.mock('react-native-paper', () => {
-  const actual = jest.requireActual('react-native-paper');
-  return {
-    ...actual,
-    Text: (props: any) => <>{props.children}</>,
-    Button: (props: any) => <>{props.children}</>,
+  return function MockInputField(props: any) {
+    return <TextInput {...props} />;
   };
 });
 
-// ⚡ Mock navigation
+jest.mock('react-native-paper', () => {
+  const React = require('react');
+  const { TextInput, TouchableOpacity, Text } = require('react-native');
+
+  return {
+    TextInput: (props: any) => <TextInput {...props} />,
+    Button: ({ children, onPress, testID }: any) => (
+      <TouchableOpacity onPress={onPress} testID={testID}>
+        <Text>{children}</Text>
+      </TouchableOpacity>
+    ),
+    HelperText: ({ children }: any) => <Text>{children}</Text>,
+  };
+});
+
+
+
 const mockPush = jest.fn();
+
 jest.mock('expo-router', () => ({
   useRouter: () => ({
     push: mockPush,
   }),
 }));
 
-// ⚡ Mock API
-const mockUsers = jest.fn();
+
+
+const mockMutation = jest.fn();
+
 jest.mock('@/store/features/auth/authApi', () => ({
   useUsersMutation: () => [
-    () => ({
-      unwrap: mockUsers,
-    }),
+    mockMutation,
+    { isLoading: false },
   ],
 }));
 
-describe('Signup Feature (UI + Hook)', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-    jest.spyOn(Alert, 'alert').mockImplementation(() => {});
-  });
+jest.spyOn(Alert, 'alert').mockImplementation(() => {});
 
-  // ---------------- UI Tests ----------------
- describe('SignupForm UI', () => {
+
+describe('SignupForm UI', () => {
   const mockOnSubmit = jest.fn();
+  const mockHandleSubmit = jest.fn((fn) => fn);
 
   beforeEach(() => {
-    jest.resetModules();
     jest.clearAllMocks();
 
-    jest.doMock('../useSignupForm', () => ({
-      __esModule: true,
-      default: () => ({
-        control: {},
-        handleSubmit: (fn: any) => fn,
-        errors: {},
-        isSubmitting: false,
-        onSubmit: mockOnSubmit,
-        secureText: true,
-        setSecureText: jest.fn(),
-      }),
-    }));
+    jest.spyOn(require('../useSignupForm'), 'default').mockReturnValue({
+      control: {},
+      handleSubmit: mockHandleSubmit,
+      errors: {},
+      isSubmitting: false,
+      onSubmit: mockOnSubmit,
+      secureText: true,
+      setSecureText: jest.fn(),
+    });
   });
 
-  it('renders submit button correctly', () => {
+  it('renders submit button', () => {
     const { getByTestId } = render(<SignupForm />);
     expect(getByTestId('submit-button')).toBeTruthy();
   });
 
-  it('calls submit when button pressed', async () => {
+  it('calls submit when button pressed', () => {
     const { getByTestId } = render(<SignupForm />);
-    await act(async () => {
-      fireEvent.press(getByTestId('submit-button'));
-    });
+
+    fireEvent.press(getByTestId('submit-button'));
+
+    expect(mockHandleSubmit).toHaveBeenCalled();
     expect(mockOnSubmit).toHaveBeenCalled();
   });
 });
 
- 
-  // ---------------- Hook Tests ----------------
-  describe('useSignupForm Hook', () => {
-    it('submits successfully and navigates to login', async () => {
-      mockUsers.mockResolvedValueOnce({});
 
-      const { result } = renderHook(() => useSignupForm());
+describe('useSignupForm Hook', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-      await act(async () => {
-        await result.current.onSubmit({
-          email: 'test@test.com',
-          password: '123456',
-        } as any);
-      });
+  it('submits successfully and navigates to login', async () => {
+  mockMutation.mockReturnValue({
+    unwrap: () => Promise.resolve({}),
+  });
 
-      expect(Alert.alert).toHaveBeenCalled();
-      expect(mockPush).toHaveBeenCalled();
+  const { result } = renderHook(() => useSignupForm());
+
+  await act(async () => {
+    await result.current.onSubmit({
+      email: 'test@test.com',
+      password: '123456',
+    } as any);
+  });
+
+  await waitFor(() => {
+    expect(Alert.alert).toHaveBeenCalled();
+    expect(mockPush).toHaveBeenCalled();
+  });
+});
+
+  it('handles 409 error correctly', async () => {
+    mockUsers.mockRejectedValueOnce({ status: 409 });
+
+    const { result } = renderHook(() => useSignupForm());
+
+    await act(async () => {
+      await result.current.onSubmit({
+        email: 'existing@test.com',
+        password: '123456',
+      } as any);
     });
 
-    it('handles 409 error correctly', async () => {
-      mockUsers.mockRejectedValueOnce({ status: 409 });
+    expect(mockPush).not.toHaveBeenCalled();
+  });
 
-      const { result } = renderHook(() => useSignupForm());
+  it('toggles secureText state', () => {
+    const { result } = renderHook(() => useSignupForm());
 
-      await act(async () => {
-        await result.current.onSubmit({
-          email: 'existing@test.com',
-          password: '123456',
-        } as any);
-      });
+    expect(result.current.secureText).toBe(true);
 
-      expect(mockPush).not.toHaveBeenCalled();
-    });
+    it('toggles secureText state', async () => {
+  const { result } = renderHook(() => useSignupForm());
 
-    it('toggles secureText state', () => {
-      const { result } = renderHook(() => useSignupForm());
+  expect(result.current.secureText).toBe(true);
 
-      expect(result.current.secureText).toBe(true);
+  act(() => {
+    result.current.setSecureText(false);
+  });
 
-      act(() => {
-        result.current.setSecureText(false);
-      });
+  await waitFor(() => {
+    expect(result.current.secureText).toBe(false);
+  });
+});
 
-      expect(result.current.secureText).toBe(false);
-    });
+    expect(result.current.secureText).toBe(false);
   });
 });
