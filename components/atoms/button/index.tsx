@@ -10,6 +10,7 @@ interface CustomButtonProps {
 const CustomButton = ({ message, isSubmitting, mode, onPress }: CustomButtonProps) => {
   return (
     <Button
+      testID="submit-button"
       loading={isSubmitting}
       disabled={isSubmitting}
       mode={mode}
