@@ -12,11 +12,22 @@ export const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: Colors.light.background,
+    borderRadius: 12,
+    height: 48,
   },
   otpInput: {
     backgroundColor: Colors.light.background,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  otpContentStyle: {
+    minWidth: 0,
+    width: 50,
+    height: 47,
+    textAlignVertical: 'center',
+    fontSize: 20,
+    padding: 0,
+    textAlign: 'center',
   },
   error: {
     color: Colors.feedback.danger,
