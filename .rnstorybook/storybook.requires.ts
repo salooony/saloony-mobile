@@ -9,24 +9,24 @@ const normalizedStories = [
     titlePrefix: "",
     directory: "./.rnstorybook/stories",
     files: "**/*.stories.?(ts|tsx|js|jsx)",
-    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    importPathMatcher: /^\.(?:(?:^|[\\/]|(?:(?:(?!(?:^|[\\/])\.).)*?)[\\/])(?!\.)(?=.)[^\\/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
     // @ts-ignore
     req: require.context(
-      './stories',
+      '../.rnstorybook/stories',
       true,
-      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/
+      /^\.(?:(?:^|[\\/]|(?:(?:(?!(?:^|[\\/])\.).)*?)[\\/])(?!\.)(?=.)[^\\/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/
     ),
   },
   {
     titlePrefix: "",
     directory: "./components",
     files: "**/*.stories.?(ts|tsx|js|jsx)",
-    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    importPathMatcher: /^\.(?:(?:^|[\\/]|(?:(?:(?!(?:^|[\\/])\.).)*?)[\\/])(?!\.)(?=.)[^\\/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
     // @ts-ignore
     req: require.context(
       '../components',
       true,
-      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/
+      /^\.(?:(?:^|[\\/]|(?:(?:(?!(?:^|[\\/])\.).)*?)[\\/])(?!\.)(?=.)[^\\/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/
     ),
   }
 ];
@@ -35,6 +35,7 @@ const normalizedStories = [
 declare global {
   var view: View;
   var STORIES: typeof normalizedStories;
+  var STORYBOOK_WEBSOCKET: { host: string; port: number } | undefined;
 }
 
 
@@ -43,21 +44,22 @@ const annotations = [
   require("@storybook/react-native/preview")
 ];
 
-global.STORIES = normalizedStories;
+globalThis.STORIES = normalizedStories;
+
 
 // @ts-ignore
 module?.hot?.accept?.();
 
 
 
-if (!global.view) {
-  global.view = start({
+if (!globalThis.view) {
+  globalThis.view = start({
     annotations,
     storyEntries: normalizedStories,
 
   });
 } else {
-  updateView(global.view, annotations, normalizedStories);
+  updateView(globalThis.view, annotations, normalizedStories);
 }
 
-export const view: View = global.view;
+export const view: View = globalThis.view;

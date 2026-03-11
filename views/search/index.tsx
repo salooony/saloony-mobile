@@ -6,6 +6,8 @@ import { TouchableOpacity, View } from 'react-native';
 
 import SearchInput from '@/components/molecule/SearchInput';
 import { styles } from './style';
+import { router } from 'expo-router';
+import { ROUTES } from '@/constants/routes';
 
 const SearchPage = () => {
   const frequentSearches = ['Hairdressers', 'Barbers', 'Manicure', 'Beauty salons'];
@@ -13,7 +15,9 @@ const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   const handleFrequentSearch = (query: string) => {
+    console.log('Frequent search selected:', query);
     setSearchQuery(query);
+    router.push(ROUTES.SEARCH_SERVICE)
   };
 
   return (
