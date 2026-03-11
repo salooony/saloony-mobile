@@ -18,6 +18,7 @@ const CustomButton = ({
 
   return (
     <Button
+      testID="submit-button"
       loading={isSubmitting}
       disabled={isDisabled}
       mode={mode}

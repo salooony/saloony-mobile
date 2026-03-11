@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     color: Colors.dark.text,
   },
   defaultSemiBold: {
-    fontSize: 16,
+    fontSize: 18,
     lineHeight: 24,
     fontWeight: '600',
   },
