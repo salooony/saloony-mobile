@@ -21,7 +21,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.saloony.saloony_mobile"
+      "package": "com.saloony.saloony"
     },
     "web": {
       "bundler": "metro",

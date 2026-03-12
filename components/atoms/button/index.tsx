@@ -3,6 +3,7 @@ import { styles } from './style';
 
 interface CustomButtonProps {
   message: string;
+  isSubmitting: boolean;
   mode: 'text' | 'outlined' | 'contained';
   disabled?: boolean;
   isLoading?: boolean;
