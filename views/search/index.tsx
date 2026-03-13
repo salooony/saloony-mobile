@@ -15,7 +15,6 @@ const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   const handleFrequentSearch = (query: string) => {
-    console.log('Frequent search selected:', query);
     setSearchQuery(query);
     router.push(ROUTES.SEARCH_SERVICE)
   };

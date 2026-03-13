@@ -4,6 +4,10 @@ export const Colors = {
     secondary: '#FFFCFA',
     tertiary: '#877754',
   },
+  neutral: {
+    black: '#000000',
+    white: '#FFFFFF',
+  },
   feedback: {
     success: '#27ae60',
     warning: '#f1c40f',

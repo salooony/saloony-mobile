@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     height: 117,
     padding: 45,
     top: 0,
-    backgroundColor: 'white',
+    backgroundColor: Colors.neutral.white,
   },
   headerTitle: {
     color: Colors.dark.text,
