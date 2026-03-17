@@ -6,13 +6,11 @@ export const styles = StyleSheet.create({
     marginTop: 0,
     marginBottom: 0,
     justifyContent: 'flex-start',
-      backgroundColor: 'transparent',
-
+    backgroundColor: 'transparent',
   },
   modalContainer: {
     width: '75%',
     height: '100%',
-    backgroundColor: Colors.dark.background,
     position: 'absolute',
     left: 0,
     alignSelf: 'stretch',
@@ -30,16 +28,16 @@ export const styles = StyleSheet.create({
     padding: 20,
     position: 'relative',
   },
- cross: {
-  position: 'absolute',
-  top: 37,
-  right: 15,
-  zIndex: 999, 
-},
-backdrop: {
-  ...StyleSheet.absoluteFillObject,
-  backgroundColor: 'rgba(0,0,0,0.3)', 
-},
+  cross: {
+    position: 'absolute',
+    top: 37,
+    right: 15,
+    zIndex: 999,
+  },
+  backdrop: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.3)',
+  },
 
   item: {
     marginTop: 10,

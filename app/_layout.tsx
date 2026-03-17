@@ -1,5 +1,3 @@
-import 'react-native-reanimated';
-
 import AuthBootstrap from '@/components/organisms/auth-bootstrap';
 import Header from '@/components/organisms/header';
 import { ROUTES } from '@/constants/routes';
@@ -7,7 +5,7 @@ import { store } from '@/store/store';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { Asset } from 'expo-asset';
 import { useFonts } from 'expo-font';
-import { Stack, usePathname, useSegments } from 'expo-router';
+import { Stack, usePathname } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
@@ -28,7 +26,6 @@ const RootLayout = () => {
   const hideHeaderRoutes: string[] = [ROUTES.SEARCH, ROUTES.SEARCH_CITY];
   const shouldShowHeader = !hideHeaderRoutes.includes(pathname);
 
-  const segment = useSegments();
 
   useEffect(() => {
     async function preload() {

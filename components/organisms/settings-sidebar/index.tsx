@@ -1,16 +1,17 @@
 import CustomButton from '@/components/atoms/button';
 import ThemedText from '@/components/atoms/typography/ThemedText';
+import { logoIcon } from '@/constants/icons';
 import {
   SIDEBAR_CATEGORY_LABELS,
   SIDEBAR_ESTABLISHMENT_LABEL,
   SIDEBAR_FEATURES_TEXT,
 } from '@/constants/settings-sidebar';
+import { UI_STRINGS } from '@/constants/uiStrings';
 import { Colors } from '@/theme/colors';
-import { Image, Pressable, TouchableOpacity, View } from 'react-native';
+import { useEffect, useRef } from 'react';
+import { Animated, Easing, Image, ImageSourcePropType, TouchableOpacity, View } from 'react-native';
 import { Icon, IconButton, Modal, Portal, Surface } from 'react-native-paper';
 import { styles } from './style';
-import { Animated, Easing } from 'react-native';
-import { useEffect, useRef } from 'react';
 
 type SettingsSidebarProps = {
   sidebarVisible: boolean;
@@ -18,10 +19,7 @@ type SettingsSidebarProps = {
 };
 
 const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: SettingsSidebarProps) => {
-
   const slideX = useRef(new Animated.Value(-300)).current;
-
-
 
   const onClose = () => {
     setSidebarVisible(false);
@@ -34,9 +32,7 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
       easing: Easing.out(Easing.ease),
       useNativeDriver: true,
     }).start();
-  }, [visible]);
-
-
+  }, [slideX, visible]);
 
   return (
     <Portal>
@@ -49,9 +45,9 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
         contentContainerStyle={styles.modalContainer}
         theme={{ colors: { backdrop: 'transparent' } }}
       >
-        {/* Backdrop */}
-        {/* <Pressable style={styles.backdrop} onPress={onClose} /> */}
-        <Animated.View style={{ flex: 1, transform: [{ translateX: slideX }], backgroundColor: 'transparent' }}>
+        <Animated.View
+          style={{ flex: 1, transform: [{ translateX: slideX }], backgroundColor: 'transparent' }}
+        >
           <Surface style={styles.surface}>
             <IconButton
               icon="close"
@@ -61,21 +57,13 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
               style={styles.cross}
             />
             <TouchableOpacity>
-              <Image
-                source={require('@/assets/images/saloony-logo-noir.png')}
-                style={styles.SidebarImage}
-              />
+              <Image source={logoIcon as ImageSourcePropType} style={styles.SidebarImage} />
             </TouchableOpacity>
-            <CustomButton mode="contained" message="Log in" isSubmitting={false} onPress={() => { }} />
+            <CustomButton mode="contained" message={UI_STRINGS.LOGIN} isLoading={false} />
 
             <View style={styles.separator} />
 
-            <CustomButton
-              mode="outlined"
-              message={SIDEBAR_ESTABLISHMENT_LABEL}
-              isSubmitting={false}
-              onPress={() => { }}
-            />
+            <CustomButton mode="outlined" message={SIDEBAR_ESTABLISHMENT_LABEL} isLoading={false} />
 
             <View style={styles.itemsContainer}>
               {SIDEBAR_CATEGORY_LABELS.map((label) => (
@@ -86,10 +74,10 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
 
               <TouchableOpacity style={styles.features}>
                 <View>
-                  <Icon source={'infinity'} size={25} color="#AC8D5F" />
+                  <Icon source={'infinity'} size={25} color={Colors.brand.primary} />
                 </View>
                 <View>
-                  <ThemedText style={styles.featuresText}> {SIDEBAR_FEATURES_TEXT}</ThemedText>
+                  <ThemedText style={styles.featuresText}>{SIDEBAR_FEATURES_TEXT}</ThemedText>
                 </View>
               </TouchableOpacity>
 
@@ -100,7 +88,6 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
             </View>
           </Surface>
         </Animated.View>
-
       </Modal>
     </Portal>
   );
