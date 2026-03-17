@@ -3,9 +3,9 @@ import { styles } from './style';
 
 interface CustomButtonProps {
   message: string;
-  isLoading: boolean;
-  isDisabled: boolean;
-  onPress: () => Promise<void> | void;
+  isLoading?: boolean;
+  isDisabled?: boolean;
+  onPress?: () => Promise<void> | void;
   mode: 'text' | 'outlined' | 'contained';
 }
 
