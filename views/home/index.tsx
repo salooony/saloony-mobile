@@ -1,5 +1,7 @@
 import ThemedText from '@/components/atoms/typography/ThemedText';
-import { Link } from 'expo-router';
+import { ROUTES } from '@/constants/routes';
+import { UI_STRINGS } from '@/constants/uiStrings';
+import { Link, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import { IconButton } from 'react-native-paper';
@@ -7,9 +9,9 @@ import { styles } from './style';
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const router = useRouter();
 
   const handleSearch = () => {
-    // Implement search functionality here
     console.log('Searching for:', searchQuery);
   };
 
@@ -20,12 +22,12 @@ const Home = () => {
       resizeMode="cover"
     >
       <View style={styles.container}>
-        <ThemedText type="title">Bienvenue sur Saloony</ThemedText>
-        <ThemedText type="subtitle">{'Simple • Rapide • Efficace'}</ThemedText>
+        <ThemedText type="title">{UI_STRINGS.HOME_WELCOME}</ThemedText>
+        <ThemedText type="subtitle">{UI_STRINGS.HOME_SUBTITLE}</ThemedText>
 
-        <TouchableOpacity style={styles.searchButton}>
+        <TouchableOpacity style={styles.searchButton} onPress={() => router.push(ROUTES.SEARCH)}>
           <IconButton icon={require('../../assets/icons/filter.png')} />
-          <ThemedText type="buttonText">Commencer</ThemedText>
+          <ThemedText type="buttonText">{UI_STRINGS.HOME_BUTTON}</ThemedText>
           <IconButton icon={require('../../assets/icons/search.png')} />
         </TouchableOpacity>
 

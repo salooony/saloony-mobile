@@ -4,6 +4,7 @@ import { Colors } from '@/theme/colors';
 import { Link } from 'expo-router';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-paper';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import ThemedText from '../../atoms/typography/ThemedText';
 import { styles } from './style';
 

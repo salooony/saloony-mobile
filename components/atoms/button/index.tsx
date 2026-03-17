@@ -3,15 +3,18 @@ import { styles } from './style';
 
 interface CustomButtonProps {
   message: string;
-  isSubmitting: boolean;
-  mode: 'text' | 'outlined' | 'contained';
+  isLoading: boolean;
+  isDisabled: boolean;
   onPress: () => Promise<void> | void;
+  mode: 'text' | 'outlined' | 'contained';
 }
-const CustomButton = ({ message, isSubmitting, mode, onPress }: CustomButtonProps) => {
+
+const CustomButton = ({ message, isLoading, isDisabled, mode, onPress }: CustomButtonProps) => {
   return (
     <Button
-      loading={isSubmitting}
-      disabled={isSubmitting}
+      testID="submit-button"
+      loading={isLoading}
+      disabled={isDisabled}
       mode={mode}
       onPress={onPress}
       style={styles.button}

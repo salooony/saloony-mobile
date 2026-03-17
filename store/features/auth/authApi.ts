@@ -1,13 +1,5 @@
 import { baseApi } from '@/store/api/baseApi';
-
-type LoginResponse = {
-  accessToken: string;
-  refreshToken: string;
-};
-type LoginRequest = {
-  username: string;
-  password: string;
-};
+import { LoginRequest, LoginResponse, SignupRequest, SignupResponse } from '@/types/auth';
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -18,7 +10,14 @@ export const authApi = baseApi.injectEndpoints({
         body: credentials,
       }),
     }),
+    users: builder.mutation<SignupResponse, SignupRequest>({
+      query: (userData) => ({
+        url: '/users',
+        method: 'POST',
+        body: userData,
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation } = authApi;
+export const { useLoginMutation, useUsersMutation } = authApi;

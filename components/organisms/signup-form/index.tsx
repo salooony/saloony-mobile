@@ -27,10 +27,11 @@ const SignupForm: React.FC = () => {
       ))}
       <View style={styles.buttonContainer}>
         <CustomButton
-          isLoading={isSubmitting}
+          isSubmitting={isSubmitting}
           mode="contained"
           onPress={handleSubmit(onSubmit)}
           message="Créer mon compte"
+          disabled={isSubmitting}
         />
       </View>
     </View>
