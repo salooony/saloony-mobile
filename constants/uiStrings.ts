@@ -4,4 +4,5 @@ export const UI_STRINGS = {
   HOME_BUTTON: 'Commencer',
 
   AROUND_ME: 'Around me',
+  LOGIN: 'Log in',
 } as const;

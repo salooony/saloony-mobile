@@ -49,7 +49,7 @@ const LoginForm = () => {
           mode="contained"
           onPress={handleSubmit(onSubmit)}
           message="Login"
-          isSubmitting={isLoading || isSubmitting}
+          isLoading={isLoading || isSubmitting}
         />
       </View>
     </View>

@@ -9,12 +9,15 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
+import { PaperProvider } from 'react-native-paper';
 import 'react-native-reanimated';
 import { Provider } from 'react-redux';
+import SettingsSidebar from '@/components/organisms/settings-sidebar';
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();
   const [assetsLoaded, setAssetsLoaded] = useState<boolean>(false);
+  const [sidebarVisible, setSidebarVisible] = useState(false);
   const [loaded] = useFonts({
     Inter: require('../assets/fonts/Inter-VariableFont_opsz,wght.ttf'),
   });
@@ -22,8 +25,6 @@ const RootLayout = () => {
   const hideHeaderRoutes: string[] = [ROUTES.SEARCH, ROUTES.SEARCH_CITY];
   const shouldShowHeader = !hideHeaderRoutes.includes(pathname);
 
-  const segment = useSegments();
-  const isStorybookRoute = (segment?.[0] as string) === 'storybook';
 
   useEffect(() => {
     async function preload() {
@@ -51,18 +52,19 @@ const RootLayout = () => {
   return (
     <Provider store={store}>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <>
-          <AuthBootstrap />
-          {!isStorybookRoute && <Header />}
-          <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="index" />
-            {/* Storybook route - dev only */}
-            <Stack.Protected guard={__DEV__}>
-              <Stack.Screen name="storybook" />
-            </Stack.Protected>
-          </Stack>
-          <StatusBar style="auto" />
-        </>
+        <PaperProvider>
+        <AuthBootstrap />
+        {shouldShowHeader && <Header sidebarVisible={sidebarVisible} setSidebarVisible={setSidebarVisible} />}
+        <SettingsSidebar sidebarVisible={sidebarVisible} setSidebarVisible={setSidebarVisible} />
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="index" />
+          {/* Storybook route - dev only */}
+          <Stack.Protected guard={__DEV__}>
+            <Stack.Screen name="storybook" />
+          </Stack.Protected>
+        </Stack>
+        <StatusBar style="auto" />
+        </PaperProvider>
       </ThemeProvider>
     </Provider>
   );
