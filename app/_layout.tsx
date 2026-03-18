@@ -13,6 +13,7 @@ import { PaperProvider } from 'react-native-paper';
 import 'react-native-reanimated';
 import { Provider } from 'react-redux';
 import SettingsSidebar from '@/components/organisms/settings-sidebar';
+import AuthBootstrap from '@/components/organisms/auth-bootstrap';
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();

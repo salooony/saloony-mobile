@@ -1,11 +1,11 @@
-import { Button } from 'react-native-paper';
+import { Button, type ButtonProps } from 'react-native-paper';
 
 interface CustomButtonProps {
   message: string;
   isLoading?: boolean;
   isDisabled?: boolean;
   onPress?: () => Promise<void> | void;
-  mode: 'text' | 'outlined' | 'contained';
+  mode: ButtonProps['mode'];
 }
 
 const CustomButton = ({ message, isLoading, isDisabled, mode, onPress }: CustomButtonProps) => {

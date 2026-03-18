@@ -10,7 +10,8 @@ import { styles } from './styles';
 import usePersonalInfo from './usePersonalInfo';
 
 const PersonalInfoPage = () => {
-  const { control, secureText, setSecureText, activeTab, handleSubmit, onSubmit } = usePersonalInfo();
+  const { control, secureText, setSecureText, activeTab, setActiveTab, handleSubmit, onSubmit } =
+    usePersonalInfo();
 
   return (
     <View style={styles.screen}>
@@ -24,7 +25,12 @@ const PersonalInfoPage = () => {
           {TABS_PERSONAL_INFO.map((t) => {
             const isActive = t === activeTab;
             return (
-              <TouchableOpacity key={t} activeOpacity={0.8} style={styles.tabItem}>
+              <TouchableOpacity
+                key={t}
+                activeOpacity={0.8}
+                style={styles.tabItem}
+                onPress={() => setActiveTab(t)}
+              >
                 <Text
                   variant="titleMedium"
                   style={[styles.tabText, isActive && styles.tabTextActive]}
@@ -51,11 +57,10 @@ const PersonalInfoPage = () => {
           ))}
 
           <CustomButton
-            mode="contained-tonal"
-            onPress={() => {}}
+            mode="contained"
             message={PERSONAL_INFO_TEXTS.SAVE_BUTTON}
-            isSubmitting={false}
-            disabled={true}
+            isLoading={false}
+            isDisabled={false}
           />
         </View>
 
@@ -87,11 +92,11 @@ const PersonalInfoPage = () => {
             <View style={styles.buttonWrapper}>
               <View style={styles.buttonSizeContainer}>
                 <CustomButton
-                  mode="contained-tonal"
-                  onPress={handleSubmit(onsubmit)}
+                  mode="contained"
+                  onPress={handleSubmit(onSubmit)}
                   message={'Confirm'}
-                  isSubmitting={false}
-                  disabled={true}
+                  isLoading={false}
+                  isDisabled={true}
                 />
               </View>
             </View>

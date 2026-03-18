@@ -1,3 +1,4 @@
+import { TABS_PERSONAL_INFO } from '@/constants/tabsPersonalInfo';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -17,15 +18,17 @@ const defaultValues: IPersonalInfo = {
 
 const usePersonalInfo = () => {
   const [personalInfo, setPersonalInfo] = useState<IPersonalInfo>(defaultValues);
-  const onSubmit = (data: IPersonalInfo) => {
-    setPersonalInfo(data);
-  };
 
   const [secureText, setSecureText] = useState(true);
 
-  const activeTab = 'Personal information';
+  const [activeTab, setActiveTab] = useState<string>(
+    TABS_PERSONAL_INFO[0] ?? 'Personal information',
+  );
   const { control, handleSubmit, setError } = useForm<IPersonalInfo>();
 
+  const onSubmit = (data: IPersonalInfo) => {
+    setPersonalInfo(data);
+  };
   return {
     personalInfo,
     setPersonalInfo,
@@ -36,6 +39,7 @@ const usePersonalInfo = () => {
     secureText,
     setSecureText,
     activeTab,
+    setActiveTab,
   };
 };
 
