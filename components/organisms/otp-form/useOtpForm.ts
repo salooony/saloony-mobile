@@ -4,7 +4,6 @@ export const useOtpForm = () => {
   const {
     control,
     handleSubmit,
-    setError,
     formState: { errors, isSubmitting },
   } = useForm({});
 

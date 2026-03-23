@@ -20,7 +20,6 @@ const LoginForm = () => {
     secureText,
     setSecureText,
     isLoading,
-    error,
   } = useLoginForm();
   return (
     <View style={styles.container}>

@@ -4,7 +4,7 @@ import { store } from '@/store/store';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { Asset } from 'expo-asset';
 import { useFonts } from 'expo-font';
-import { Stack, usePathname } from 'expo-router';
+import { Stack, usePathname, useSegments } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';

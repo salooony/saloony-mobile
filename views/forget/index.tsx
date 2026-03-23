@@ -11,14 +11,14 @@ const ForgetPage = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <ScrollView style={styles.container}>
-         <Text variant="headlineMedium" style={styles.title}>
-        Forgot Your Password
-      </Text>
-      <View style={styles.descriptionContainer}>
-        <Text variant="bodyMedium" style={styles.descriptionText}>
-          Enter your Email Address to send you a Verification Code on SMS
+        <Text variant="headlineMedium" style={styles.title}>
+          Forgot Your Password
         </Text>
-      </View>
+        <View style={styles.descriptionContainer}>
+          <Text variant="bodyMedium" style={styles.descriptionText}>
+            Enter your Email Address to send you a Verification Code on SMS
+          </Text>
+        </View>
         <ForgetForm />
       </ScrollView>
     </KeyboardAvoidingView>

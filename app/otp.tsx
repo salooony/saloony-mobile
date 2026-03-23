@@ -1,10 +1,8 @@
-import OtpPage from '@/views/otp'
-import React from 'react'
+import OtpPage from '@/views/otp';
+import React from 'react';
 
 const OtpScreen = () => {
-  return (
-    <OtpPage />
-  )
-}
+  return <OtpPage />;
+};
 
-export default OtpScreen
+export default OtpScreen;

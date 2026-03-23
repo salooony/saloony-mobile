@@ -1,7 +1,7 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-    line: {
+  line: {
     width: 106,
     height: 1,
     backgroundColor: 'black',
