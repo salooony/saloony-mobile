@@ -1,7 +1,7 @@
 import ThemedText from '@/components/atoms/typography/ThemedText';
 import { ROUTES } from '@/constants/routes';
 import { UI_STRINGS } from '@/constants/uiStrings';
-import { useRouter } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import { IconButton } from 'react-native-paper';
@@ -30,6 +30,8 @@ const Home = () => {
           <ThemedText type="buttonText">{UI_STRINGS.HOME_BUTTON}</ThemedText>
           <IconButton icon={require('../../assets/icons/search.png')} />
         </TouchableOpacity>
+
+        <Link href="/storybook">Open Storybook</Link>
       </View>
     </ImageBackground>
   );
