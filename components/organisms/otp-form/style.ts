@@ -6,6 +6,5 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 0,
     marginHorizontal: 48,
-
   },
 });

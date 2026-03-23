@@ -22,7 +22,7 @@ export const Colors = {
     icon: '#FFFFFF',
     tabIconDefault: '#687076',
     tabIconSelected: '#FFFFFF',
-    link: "#FFFFFF"
+    link: '#FFFFFF',
   },
   dark: {
     background: '#000000',
@@ -33,6 +33,6 @@ export const Colors = {
     icon: '#000000',
     tabIconDefault: '#9BA1A6',
     tabIconSelected: '#000000',
-    link : '#000000'
+    link: '#000000',
   },
 };

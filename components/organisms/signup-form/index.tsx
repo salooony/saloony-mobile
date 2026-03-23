@@ -31,6 +31,7 @@ const SignupForm: React.FC = () => {
           mode="contained"
           onPress={handleSubmit(onSubmit)}
           message="Créer mon compte"
+          isDisabled={isSubmitting}
         />
       </View>
     </View>
