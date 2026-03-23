@@ -2,29 +2,26 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   headerContainer: {
-    display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
     alignItems: 'center',
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 45,
-    height: 117,
-    top: 0,
-    backgroundColor: 'white',
+    justifyContent: 'space-between',
   },
+
   subContainer: {
-    display: 'flex',
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    width: 55,
+    justifyContent: 'center',
+    columnGap: 2,
   },
+
   headerImage: {
-    width: 157,
-    resizeMode: 'contain',
+    height: 50,
+    width: 150,
+    resizeMode: 'cover',
+    overflow: 'hidden',
   },
+
   shuffleIcon: {
     width: 10,
     height: 10,

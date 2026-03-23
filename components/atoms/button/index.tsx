@@ -1,22 +1,21 @@
-import { Button } from 'react-native-paper';
-import { styles } from './style';
+import { Button, type ButtonProps } from 'react-native-paper';
 
 interface CustomButtonProps {
   message: string;
-  isSubmitting: boolean;
-  mode: 'text' | 'outlined' | 'contained';
-  onPress: () => Promise<void> | void;
+  isLoading?: boolean;
+  isDisabled?: boolean;
+  onPress?: () => Promise<void> | void;
+  mode: ButtonProps['mode'];
 }
-const CustomButton = ({ message, isSubmitting, mode, onPress }: CustomButtonProps) => {
+
+const CustomButton = ({ message, isLoading, isDisabled, mode, onPress }: CustomButtonProps) => {
   return (
     <Button
       testID="submit-button"
-      loading={isSubmitting}
-      disabled={isSubmitting}
+      loading={isLoading}
+      disabled={isDisabled}
       mode={mode}
       onPress={onPress}
-      style={styles.button}
-      labelStyle={styles.label}
     >
       {message}
     </Button>

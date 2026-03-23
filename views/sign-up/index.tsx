@@ -1,10 +1,10 @@
 import ThemedText from '@/components/atoms/typography/ThemedText';
+import SignupForm from '@/components/organisms/signup-form';
+import { ROUTES } from '@/constants/routes';
 import { Link } from 'expo-router';
 import React from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 import { styles } from './style';
-import SignupForm from '@/components/organisms/signup-form';
-import { ROUTES } from '@/constants/routes';
 
 const SignupPage: React.FC = () => {
   return (
