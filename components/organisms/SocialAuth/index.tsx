@@ -1,5 +1,3 @@
-import { View, TouchableOpacity, Image } from 'react-native';
-import React from 'react';
 import Line from '@/components/atoms/line';
 import ThemedText from '@/components/atoms/typography/ThemedText';
 import React from 'react';
