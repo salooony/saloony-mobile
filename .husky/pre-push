@@ -1,6 +1,13 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+# Husky v10+ pre-push hook (no husky.sh, no shebang needed)
+echo "Running pre-push checks..."
 
-# Quality gate before push: formatting + linting + TypeScript check
+npm run format:check
+npm run lint
+npm run typecheck
 
-npm run check
+if [ $? -ne 0 ]; then
+  echo "Pre-push checks failed. Aborting push."
+  exit 1
+fi
+
+echo "All checks passed. Proceeding with push."

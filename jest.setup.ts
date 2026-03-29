@@ -1,4 +1,3 @@
-
 // حل مشاكل react-native / Expo
 jest.mock('expo-router', () => ({
   useRouter: () => ({
@@ -11,4 +10,3 @@ jest.mock('expo-router', () => ({
 jest.mock('expo-constants', () => ({
   expoConfig: {},
 }));
-

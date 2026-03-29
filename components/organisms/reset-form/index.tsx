@@ -44,7 +44,7 @@ const ResetForm = () => {
       })}
       <View style={styles.buttonContainer}>
         <CustomButton
-          isSubmitting={isSubmitting}
+          isLoading={isSubmitting}
           mode="contained"
           onPress={handleSubmit(onSubmit)}
           message="Reset"
