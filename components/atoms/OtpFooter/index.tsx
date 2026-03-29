@@ -10,7 +10,7 @@ const OtpFooter = () => {
     <View style={style.footer}>
       <ThemedText style={style.footerText}>{"Didn't receive the OTP?"}</ThemedText>
       <Link href={ROUTES.LOGIN} style={style.link}>
-        {"RESEND"}
+        {'RESEND'}
       </Link>
     </View>
   );

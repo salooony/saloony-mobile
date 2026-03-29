@@ -7,14 +7,12 @@ import SignupForm from '../index';
 import * as useSignupForm from '../useSignupForm';
 
 jest.mock('@/components/atoms/input-field', () => {
-
   return function MockInputField(props: any) {
     return <TextInput {...props} />;
   };
 });
 
 jest.mock('react-native-paper', () => {
-
   return {
     TextInput: (props: any) => <TextInput {...props} />,
     Button: ({ children, onPress, testID }: any) => (
@@ -26,8 +24,6 @@ jest.mock('react-native-paper', () => {
   };
 });
 
-
-
 const mockPush = jest.fn();
 
 jest.mock('expo-router', () => ({
@@ -36,19 +32,13 @@ jest.mock('expo-router', () => ({
   }),
 }));
 
-
-
 const mockMutation = jest.fn();
 
 jest.mock('@/store/features/auth/authApi', () => ({
-  useUsersMutation: () => [
-    mockMutation,
-    { isLoading: false },
-  ],
+  useUsersMutation: () => [mockMutation, { isLoading: false }],
 }));
 
 jest.spyOn(Alert, 'alert').mockImplementation(() => {});
-
 
 describe('SignupForm UI', () => {
   const mockOnSubmit = jest.fn();
@@ -84,36 +74,35 @@ describe('SignupForm UI', () => {
   });
 });
 
-
 describe('useSignupForm Hook', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it('submits successfully and navigates to login', async () => {
-  mockMutation.mockReturnValue({
-    unwrap: () => Promise.resolve({}),
-  });
+    mockMutation.mockReturnValue({
+      unwrap: () => Promise.resolve({}),
+    });
 
-  const { result } = renderHook(() => useSignupForm.default());
+    const { result } = renderHook(() => useSignupForm.default());
 
-  await act(async () => {
-    await result.current.onSubmit({
-      email: 'test@test.com',
-      password: '123456',
-    } as any);
-  });
+    await act(async () => {
+      await result.current.onSubmit({
+        email: 'test@test.com',
+        password: '123456',
+      } as any);
+    });
 
-  await waitFor(() => {
-    expect(Alert.alert).toHaveBeenCalled();
-    expect(mockPush).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(Alert.alert).toHaveBeenCalled();
+      expect(mockPush).toHaveBeenCalled();
+    });
   });
-});
 
   it('handles 409 error correctly', async () => {
     mockMutation.mockRejectedValueOnce({ status: 409 });
 
-  const { result } = renderHook(() => useSignupForm.default());
+    const { result } = renderHook(() => useSignupForm.default());
 
     await act(async () => {
       await result.current.onSubmit({
@@ -126,23 +115,23 @@ describe('useSignupForm Hook', () => {
   });
 
   it('toggles secureText state', () => {
-  const { result } = renderHook(() => useSignupForm.default());
+    const { result } = renderHook(() => useSignupForm.default());
 
     expect(result.current.secureText).toBe(true);
 
     it('toggles secureText state', async () => {
-  const { result } = renderHook(() => useSignupForm.default());
+      const { result } = renderHook(() => useSignupForm.default());
 
-  expect(result.current.secureText).toBe(true);
+      expect(result.current.secureText).toBe(true);
 
-  act(() => {
-    result.current.setSecureText(false);
-  });
+      act(() => {
+        result.current.setSecureText(false);
+      });
 
-  await waitFor(() => {
-    expect(result.current.secureText).toBe(false);
-  });
-});
+      await waitFor(() => {
+        expect(result.current.secureText).toBe(false);
+      });
+    });
 
     expect(result.current.secureText).toBe(false);
   });

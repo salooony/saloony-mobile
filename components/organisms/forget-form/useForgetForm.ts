@@ -11,7 +11,7 @@ const useForgetForm = () => {
     control,
     handleSubmit,
     setError,
-    
+
     formState: { errors, isSubmitting },
   } = useForm<ForgetFormData>({
     defaultValues: FORGET_FORM_DEFAULT_VALUES,

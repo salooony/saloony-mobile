@@ -26,7 +26,6 @@ const RootLayout = () => {
   const hideHeaderRoutes: string[] = [ROUTES.SEARCH, ROUTES.SEARCH_CITY];
   const shouldShowHeader = !hideHeaderRoutes.includes(pathname);
 
-
   useEffect(() => {
     async function preload() {
       try {
@@ -54,17 +53,19 @@ const RootLayout = () => {
     <Provider store={store}>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <PaperProvider>
-        <AuthBootstrap />
-        {shouldShowHeader && <Header sidebarVisible={sidebarVisible} setSidebarVisible={setSidebarVisible} />}
-        <SettingsSidebar sidebarVisible={sidebarVisible} setSidebarVisible={setSidebarVisible} />
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="index" />
-          {/* Storybook route - dev only */}
-          <Stack.Protected guard={__DEV__}>
-            <Stack.Screen name="storybook" />
-          </Stack.Protected>
-        </Stack>
-        <StatusBar style="auto" />
+          <AuthBootstrap />
+          {shouldShowHeader && (
+            <Header sidebarVisible={sidebarVisible} setSidebarVisible={setSidebarVisible} />
+          )}
+          <SettingsSidebar sidebarVisible={sidebarVisible} setSidebarVisible={setSidebarVisible} />
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="index" />
+            {/* Storybook route - dev only */}
+            <Stack.Protected guard={__DEV__}>
+              <Stack.Screen name="storybook" />
+            </Stack.Protected>
+          </Stack>
+          <StatusBar style="auto" />
         </PaperProvider>
       </ThemeProvider>
     </Provider>

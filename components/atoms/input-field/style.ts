@@ -35,3 +35,9 @@ export const styles = StyleSheet.create({
     marginTop: 4,
   },
 });
+
+export const getOutlineTheme = (error?: boolean) => ({
+  outlineColor: error ? Colors.feedback.danger : Colors.dark.background,
+  borderRadius: 12,
+  borderWidth: 1,
+});
