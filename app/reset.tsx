@@ -1,10 +1,8 @@
-import React from 'react'
-import ResetPage from '@/views/reset'
+import React from 'react';
+import ResetPage from '@/views/reset';
 
 const ResetScreen = () => {
-  return (
-    <ResetPage />
-  )
-}
+  return <ResetPage />;
+};
 
-export default ResetScreen
+export default ResetScreen;

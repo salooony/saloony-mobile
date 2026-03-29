@@ -29,5 +29,5 @@ const IconSymbol = ({
       ]}
     />
   );
-}
+};
 export default IconSymbol;

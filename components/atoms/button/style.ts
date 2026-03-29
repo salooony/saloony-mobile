@@ -2,7 +2,7 @@ import { Colors } from '@/theme/colors';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-button: {
+  button: {
     backgroundColor: Colors.brand.primary,
     minWidth: 180,
     height: 51,
@@ -10,9 +10,9 @@ button: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-},
-label: {
+  },
+  label: {
     fontSize: 18,
     fontWeight: 'bold',
-},
+  },
 });

@@ -23,16 +23,13 @@ const useForgetForm = () => {
     try {
       // TODO: Call your forgot password API here
       // await forgotPasswordApi(data.email);
-      
-      Alert.alert(
-        ALERT_TITLES.SUCCESS, 
-        SUCCESS_MESSAGES.PASSWORD_RESET_EMAIL_SENT
-      );
-      
+
+      Alert.alert(ALERT_TITLES.SUCCESS, SUCCESS_MESSAGES.PASSWORD_RESET_EMAIL_SENT);
+
       router.push(ROUTES.LOGIN);
     } catch (error: any) {
       console.error('Error sending reset email:', error);
-      
+
       if (error.response?.status === 404) {
         setError('email', {
           message: ERROR_MESSAGES.EMAIL_NOT_FOUND,

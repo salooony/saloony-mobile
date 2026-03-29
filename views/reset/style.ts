@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     padding: 61,
   },
-    title: {
+  title: {
     fontWeight: 'bold',
     marginBottom: 49,
   },
