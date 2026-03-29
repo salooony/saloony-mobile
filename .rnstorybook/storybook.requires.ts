@@ -43,11 +43,8 @@ const annotations = [require('./preview'), require('@storybook/react-native/prev
 
 globalThis.STORIES = normalizedStories;
 
-
 // @ts-ignore
 module?.hot?.accept?.();
-
-
 
 if (!globalThis.view) {
   globalThis.view = start({
