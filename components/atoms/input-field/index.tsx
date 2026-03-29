@@ -4,7 +4,7 @@ import React from 'react';
 import { Control, Controller, FieldError } from 'react-hook-form';
 import { Image, View } from 'react-native';
 import { Text, TextInput } from 'react-native-paper';
-import { getOutlineTheme, outlineStyle, styles } from './style';
+import { getOutlineTheme, styles } from './style';
 
 interface InputFieldProps {
   control: Control<any>;

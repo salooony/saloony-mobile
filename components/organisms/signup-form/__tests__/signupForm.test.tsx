@@ -1,12 +1,12 @@
+import { SignupFormData } from '@/types/forms';
+import { act, fireEvent, render, renderHook, waitFor } from '@testing-library/react-native';
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
-import { renderHook, act, waitFor } from '@testing-library/react-native';
-import { Alert } from 'react-native';
+import { useForm } from 'react-hook-form';
+import { Alert, Text, TextInput, TouchableOpacity } from 'react-native';
 import SignupForm from '../index';
-import useSignupForm from '../useSignupForm';
+import * as useSignupForm from '../useSignupForm';
+
 jest.mock('@/components/atoms/input-field', () => {
-  const React = require('react');
-  const { TextInput } = require('react-native');
 
   return function MockInputField(props: any) {
     return <TextInput {...props} />;
@@ -14,8 +14,6 @@ jest.mock('@/components/atoms/input-field', () => {
 });
 
 jest.mock('react-native-paper', () => {
-  const React = require('react');
-  const { TextInput, TouchableOpacity, Text } = require('react-native');
 
   return {
     TextInput: (props: any) => <TextInput {...props} />,
@@ -59,8 +57,9 @@ describe('SignupForm UI', () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    jest.spyOn(require('../useSignupForm'), 'default').mockReturnValue({
-      control: {},
+    const { control } = useForm<SignupFormData>();
+    jest.spyOn(useSignupForm, 'default').mockReturnValue({
+      control,
       handleSubmit: mockHandleSubmit,
       errors: {},
       isSubmitting: false,
@@ -96,7 +95,7 @@ describe('useSignupForm Hook', () => {
     unwrap: () => Promise.resolve({}),
   });
 
-  const { result } = renderHook(() => useSignupForm());
+  const { result } = renderHook(() => useSignupForm.default());
 
   await act(async () => {
     await result.current.onSubmit({
@@ -112,9 +111,9 @@ describe('useSignupForm Hook', () => {
 });
 
   it('handles 409 error correctly', async () => {
-    mockUsers.mockRejectedValueOnce({ status: 409 });
+    mockMutation.mockRejectedValueOnce({ status: 409 });
 
-    const { result } = renderHook(() => useSignupForm());
+  const { result } = renderHook(() => useSignupForm.default());
 
     await act(async () => {
       await result.current.onSubmit({
@@ -127,12 +126,12 @@ describe('useSignupForm Hook', () => {
   });
 
   it('toggles secureText state', () => {
-    const { result } = renderHook(() => useSignupForm());
+  const { result } = renderHook(() => useSignupForm.default());
 
     expect(result.current.secureText).toBe(true);
 
     it('toggles secureText state', async () => {
-  const { result } = renderHook(() => useSignupForm());
+  const { result } = renderHook(() => useSignupForm.default());
 
   expect(result.current.secureText).toBe(true);
 
