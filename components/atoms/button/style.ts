@@ -1,4 +1,3 @@
-
 import { Colors } from '@/theme/colors';
 import { StyleSheet, ViewStyle } from 'react-native';
 
@@ -94,7 +93,7 @@ export function getStyles(mode: Mode, state: State): ButtonStyles {
 export function getIconButtonStyle(
   backgroundColor: string,
   borderColor: string,
-  borderWidth: number
+  borderWidth: number,
 ): { container: ViewStyle } {
   return {
     container: {

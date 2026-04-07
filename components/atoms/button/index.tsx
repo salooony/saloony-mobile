@@ -1,13 +1,6 @@
-
 import { Button, IconButton } from 'react-native-paper';
 import { Pressable } from 'react-native';
-import {
-  getStyles,
-  getIconButtonStyle,
-  Mode,
-  State,
-  baseStyles,
-} from './style';
+import { getStyles, getIconButtonStyle, Mode, State, baseStyles } from './style';
 
 interface Props {
   label?: string;
@@ -36,10 +29,10 @@ const CustomButton = ({
         const state: State = isDisabled
           ? 'disabled'
           : pressed
-          ? 'pressed'
-          : hovered
-          ? 'hovered'
-          : 'default';
+            ? 'pressed'
+            : hovered
+              ? 'hovered'
+              : 'default';
 
         const styles = getStyles(mode, state);
 
@@ -47,7 +40,7 @@ const CustomButton = ({
           const iconStyles = getIconButtonStyle(
             styles.backgroundColor,
             styles.borderColor,
-            styles.borderWidth
+            styles.borderWidth,
           );
 
           return (
@@ -80,10 +73,7 @@ const CustomButton = ({
               baseStyles.base,
               { borderWidth: styles.borderWidth, borderColor: styles.borderColor },
             ]}
-            contentStyle={[
-              baseStyles.content,
-              iconPosition === 'right' && baseStyles.rowReverse,
-            ]}
+            contentStyle={[baseStyles.content, iconPosition === 'right' && baseStyles.rowReverse]}
           >
             {label}
           </Button>

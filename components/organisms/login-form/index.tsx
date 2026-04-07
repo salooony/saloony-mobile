@@ -47,7 +47,7 @@ const LoginForm = () => {
         <CustomButton
           mode="contained"
           onPress={handleSubmit(onSubmit)}
-          message="Login"
+          label="Login"
           isLoading={isLoading || isSubmitting}
         />
       </View>

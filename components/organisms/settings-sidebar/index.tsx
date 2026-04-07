@@ -59,7 +59,7 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
             <TouchableOpacity>
               <Image source={logoIcon as ImageSourcePropType} style={styles.SidebarImage} />
             </TouchableOpacity>
-            <CustomButton mode="contained"  label={UI_STRINGS.LOGIN} isLoading={false} />
+            <CustomButton mode="contained" label={UI_STRINGS.LOGIN} isLoading={false} />
 
             <View style={styles.separator} />
 
