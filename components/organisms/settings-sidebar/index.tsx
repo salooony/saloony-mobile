@@ -59,11 +59,11 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
             <TouchableOpacity>
               <Image source={logoIcon as ImageSourcePropType} style={styles.SidebarImage} />
             </TouchableOpacity>
-            <CustomButton mode="contained" message={UI_STRINGS.LOGIN} isLoading={false} />
+            <CustomButton mode="contained"  label={UI_STRINGS.LOGIN} isLoading={false} />
 
             <View style={styles.separator} />
 
-            <CustomButton mode="outlined" message={SIDEBAR_ESTABLISHMENT_LABEL} isLoading={false} />
+            <CustomButton mode="outlined" label={SIDEBAR_ESTABLISHMENT_LABEL} isLoading={false} />
 
             <View style={styles.itemsContainer}>
               {SIDEBAR_CATEGORY_LABELS.map((label) => (
@@ -80,7 +80,6 @@ const SettingsSidebar = ({ sidebarVisible: visible, setSidebarVisible }: Setting
                   <ThemedText style={styles.featuresText}>{SIDEBAR_FEATURES_TEXT}</ThemedText>
                 </View>
               </TouchableOpacity>
-
               <View style={styles.media}>
                 <Icon source="instagram" size={28} color={Colors.light.tabIconDefault} />
                 <Icon source="facebook" size={28} color={Colors.light.tabIconDefault} />

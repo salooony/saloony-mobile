@@ -31,4 +31,16 @@ export const Colors = {
     tabIconSelected: '#000000',
     link: '#000000',
   },
+  ui: {
+    background: '#FFFFFF',
+    surface: '#F5F5F5',
+    transparent: 'transparent',
+  },
+
+  state: {
+    disabledBg: '#AC8D5F80',
+    disabledText: '#AC8D5F80',
+    hoverBg: '#B79A6B',
+    outlineHoverBg: '#F5F5F5',
+  },
 };
