@@ -2,7 +2,7 @@ import { Colors } from '@/theme/colors';
 import { StyleSheet, ViewStyle } from 'react-native';
 
 export type Mode = 'contained' | 'outlined' | 'text';
-export type State = 'default' | 'hovered' | 'pressed' | 'disabled';
+export type State = 'default' | 'pressed' | 'disabled';
 
 type ButtonStyles = {
   backgroundColor: string;
@@ -37,7 +37,17 @@ export const baseStyles = StyleSheet.create({
     flexDirection: 'row-reverse',
   },
 });
-
+export function getButtonContainerStyle(
+  backgroundColor: string,
+  borderColor: string,
+  borderWidth: number,
+): ViewStyle {
+  return {
+    backgroundColor,
+    borderColor,
+    borderWidth,
+  };
+}
 export function getStyles(mode: Mode, state: State): ButtonStyles {
   const { brand, ui, state: s } = Colors;
 
@@ -58,7 +68,6 @@ export function getStyles(mode: Mode, state: State): ButtonStyles {
   if (mode === 'contained') {
     backgroundColor = brand.primary;
 
-    if (state === 'hovered') backgroundColor = s.hoverBg;
     if (state === 'pressed') backgroundColor = brand.tertiary;
 
     textColor = brand.secondary;
@@ -67,7 +76,7 @@ export function getStyles(mode: Mode, state: State): ButtonStyles {
   }
 
   if (mode === 'outlined') {
-    backgroundColor = state === 'hovered' ? s.outlineHoverBg : ui.transparent;
+    backgroundColor =  ui.transparent;
 
     textColor = brand.primary;
     borderColor = brand.primary;

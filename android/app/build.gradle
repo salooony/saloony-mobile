@@ -87,9 +87,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.anonymous.saloony_mobile'
+    namespace 'com.saloony.saloony'
     defaultConfig {
-        applicationId 'com.anonymous.saloony_mobile'
+        applicationId 'com.saloony.saloony'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
