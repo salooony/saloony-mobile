@@ -1,13 +1,6 @@
-# Husky v10+ pre-push hook (no husky.sh, no shebang needed)
+#!/usr/bin/env sh
+set -e
+
 echo "Running pre-push checks..."
-
-npm run format:check
-npm run lint
-npm run typecheck
-
-if [ $? -ne 0 ]; then
-  echo "Pre-push checks failed. Aborting push."
-  exit 1
-fi
-
+npm run check
 echo "All checks passed. Proceeding with push."
