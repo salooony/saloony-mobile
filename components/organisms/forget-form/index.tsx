@@ -31,7 +31,7 @@ const ForgetForm = () => {
           isDisabled={isSubmitting}
           mode="contained"
           onPress={handleSubmit(onSubmit)}
-          message="Send"
+          label="Send"
         />
         <TouchableOpacity onPress={() => router.push(ROUTES.LOGIN)}>
           <Text variant="labelMedium" style={styles.backText}>

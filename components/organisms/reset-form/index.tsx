@@ -47,7 +47,7 @@ const ResetForm = () => {
           isLoading={isSubmitting}
           mode="contained"
           onPress={handleSubmit(onSubmit)}
-          message="Reset"
+          label="Reset"
         />
       </View>
     </View>

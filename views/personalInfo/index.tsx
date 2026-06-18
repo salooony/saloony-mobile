@@ -58,7 +58,7 @@ const PersonalInfoPage = () => {
 
           <CustomButton
             mode="contained"
-            message={PERSONAL_INFO_TEXTS.SAVE_BUTTON}
+            label={PERSONAL_INFO_TEXTS.SAVE_BUTTON}
             isLoading={false}
             isDisabled={false}
           />
@@ -94,7 +94,7 @@ const PersonalInfoPage = () => {
                 <CustomButton
                   mode="contained"
                   onPress={handleSubmit(onSubmit)}
-                  message={'Confirm'}
+                  label={'Confirm'}
                   isLoading={false}
                   isDisabled={true}
                 />
