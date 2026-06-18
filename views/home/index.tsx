@@ -12,7 +12,6 @@ const Home = () => {
   const router = useRouter();
 
   const handleSearch = () => {
-    console.log('Searching for:', searchQuery);
   };
 
   return (

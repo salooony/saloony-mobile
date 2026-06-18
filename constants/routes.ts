@@ -6,6 +6,7 @@ export const ROUTES = {
   OTP: '/otp' as const,
   SEARCH: '/search' as const,
   SEARCH_CITY: '/searchCity' as const,
+  SEARCH_SERVICE: '/searchService' as const,
 };
 
 export const API_ROUTES = {
